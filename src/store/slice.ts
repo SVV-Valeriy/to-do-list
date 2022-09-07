@@ -10,11 +10,11 @@ interface ITask {
 }
 
 interface ITaskList {
-    task: Array<ITask>
+    tasks: Array<ITask>
 }
 
 const initialState: ITaskList = {
-    task:
+    tasks:
         [
             {
                 id: 1,
@@ -78,7 +78,7 @@ export const taskSlice = createSlice({
     initialState,
     reducers: {
         addNewTask(state, action: PayloadAction<ITask>) {
-            state.task.push(action.payload)
+            state.tasks.push(action.payload)
         }
     }
 })
