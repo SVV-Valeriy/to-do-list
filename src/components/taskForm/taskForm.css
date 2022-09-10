@@ -1,0 +1,53 @@
+.modal {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modalContent {
+    width: 400px;
+    height: 281px;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: white;
+    transform: scale(0.5);
+    transition: 0.4s all;
+}
+.modalContent.active {
+    transform: scale(1);
+}
+.containerModal {
+    margin: auto;
+    width: 319px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    width: 319px;
+    height: 40px;
+}
+.buttonAdd {
+    margin: 20px;
+    width: 153px;
+    height: 48px;
+}

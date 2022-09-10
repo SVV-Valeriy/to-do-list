@@ -1,0 +1,50 @@
+.table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 58px;
+    border-bottom: 1px solid #EEEBE9;
+
+}
+.column1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+}
+.column2 {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 937px;
+}
+
+.column3 {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 151px;
+}
+.textWork {
+    padding-left: 20px;
+    color: #134EC1;
+}
+.textDone {
+    padding-left: 20px;
+    color: #F89B11;
+}
+
+.column4 {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 130px;
+}
+.borderLeft {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 32px;
+    padding-left: 20px;
+    border-left: 1px solid #C4C4C4;
+}

@@ -1,4 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import Moment from 'react-moment';
+import moment from "moment";
 
 const LS_TASK_KEY = 'rtk'
 
@@ -77,8 +79,25 @@ export const taskSlice = createSlice({
     name: 'toDoList',
     initialState,
     reducers: {
-        addNewTask(state, action: PayloadAction<ITask>) {
-            state.tasks.push(action.payload)
+        changeTask(state, action: PayloadAction<ITask>) {
+            state.tasks.map(task => {
+                if (task.id === Number(action.payload.id)) {
+                    task.status = action.payload.status
+                }
+
+                return task
+            })
+            localStorage.setItem(LS_TASK_KEY, JSON.stringify(state.tasks))
+        },
+        addTask(state, action: PayloadAction<ITask>) {
+            const newTask = {
+                id: state.tasks[state.tasks.length - 1].id + 1,
+                description: action.payload.description,
+                status: false,
+                data:  moment().format('DD.MM.Y')
+            }
+            state.tasks.unshift(newTask)
+            localStorage.setItem(LS_TASK_KEY, JSON.stringify(state.tasks))
         }
     }
 })
