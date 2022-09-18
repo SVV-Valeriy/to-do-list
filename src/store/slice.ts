@@ -1,14 +1,12 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import Moment from 'react-moment';
-import moment from "moment";
 
-const LS_TASK_KEY = 'rtk'
+const LS_TASK_KEY = 'localTasks'
 
 interface ITask {
     id: number
     description: string
     status: boolean
-    data: string
+    date: string
 }
 
 interface ITaskList {
@@ -22,55 +20,55 @@ const initialState: ITaskList = {
                 id: 1,
                 description: 'Размещение новостей на сайте',
                 status: true,
-                data: '22.04.2022'
+                date: '2022.04.22' // переделать формат
             },
             {
                 id: 2,
                 description: 'Внедрить Wi-FI для читателей',
                 status: false,
-                data: '25.03.2022'
+                date: '2022.03.25'
             },
             {
                 id: 3,
                 description: 'Отредактировать раздел "Доступная среда"',
                 status: true,
-                data: '15.03.2022'
+                date: '2022.03.15'
             },
             {
                 id: 4,
                 description: 'Презентация "Информационные технологии"',
                 status: false,
-                data: '15.03.2022'
+                date: '2022.03.15'
             },
             {
                 id: 5,
                 description: 'Счётчики - внедрить дизайн',
                 status: false,
-                data: '09.03.2022'
+                date: '2022.03.09'
             },
             {
                 id: 6,
                 description: 'Сверстать новый layout',
                 status: false,
-                data: '07.03.2022'
+                date: '2022.03.07'
             },
             {
                 id: 7,
                 description: 'Скролл в новостях',
                 status: true,
-                data: '01.03.2022'
+                date: '2022.03.01'
             },
             {
                 id: 8,
                 description: 'Форма сброса пароля',
                 status: false,
-                data: '25.02.2022'
+                date: '2022.02.25'
             },
             {
                 id: 9,
                 description: 'Внедрение модуля Chat',
                 status: false,
-                data: '20.02.2022'
+                date: '2022.02.20'
             }
         ]
 }
@@ -91,11 +89,12 @@ export const taskSlice = createSlice({
         },
         addTask(state, action: PayloadAction<ITask>) {
             const newTask = {
-                id: state.tasks[state.tasks.length - 1].id + 1,
+                id: Math.random(),
                 description: action.payload.description,
                 status: false,
-                data:  moment().format('DD.MM.Y')
+                date: new Date()
             }
+            // @ts-ignore
             state.tasks.unshift(newTask)
             localStorage.setItem(LS_TASK_KEY, JSON.stringify(state.tasks))
         }

@@ -2,54 +2,50 @@ import React, {FC} from "react";
 import {useActions} from "../../hooks/action";
 import {Field, Form, Formik, FormikHelpers} from "formik";
 import './taskForm.css'
-import {Minus} from "../../images/minus";
+import {MinusIcon} from "../../images/minusIcon";
 
 interface IFormValues {
     task: string
 }
 
-interface Props {
-    active: boolean
-    setEditMode: (boolean: boolean) => void
+interface IProps {
+    isModal: boolean
+    setModal: (boolean: boolean) => void
 }
 
-export const TaskForm: FC<Props> = ({active, setEditMode}) => {
+export const TaskForm: FC<IProps> = ({isModal, setModal}) => {
 
     const {addTask} = useActions()
 
-    const addNewTask = (description: string) => {
-        addTask({description})
-    }
-
     const hideModal = () => {
-        setEditMode(false)
+        setModal(false)
     }
 
     const onSubmitForm = (values: IFormValues, {resetForm}: FormikHelpers<IFormValues>) => {
-        addNewTask(values.task)
+        addTask({description: values.task})
         resetForm()
     }
 
     return (
-        <div className={active ? 'modal active' : 'modal'} onClick={hideModal}>
-            <div className={active ? 'modalContent active' : 'modalContent'} onClick={e => e.stopPropagation()}>
+        <div className={isModal ? 'modal active' : 'modal'} onClick={hideModal}>
+            <div className={isModal ? 'modalContent active' : 'modalContent'} onClick={e => e.stopPropagation()}>
                 <div className='header containerModal'>
                     <h2>Создать новую задачу</h2>
-                    <Minus setEditMode={setEditMode}/>
+                    <button className='invisibleButton' onClick={hideModal}>
+                        <MinusIcon/>
+                    </button>
                 </div>
         <Formik
             initialValues={{
                 task: ''
             }}
-            onSubmit={onSubmitForm}
-        >
+            onSubmit={onSubmitForm}>
             {({errors, touched}) => (
-
                 <Form className='containerModal'>
-                    <p>Описание</p>
+                    <p className='textDescription'>Описание</p>
                     <div className='form'>
                         <Field className='input' id="task" name="task" placeholder='Введите описание'/>
-                        <button className='buttonAdd' type="submit">Создать</button>
+                        <button className='buttonAdd' type="submit"><p className='textCreate'>Создать</p></button>
                     </div>
                 </Form>
             )}

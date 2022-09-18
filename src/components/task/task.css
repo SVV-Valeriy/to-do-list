@@ -6,35 +6,40 @@
     border-bottom: 1px solid #EEEBE9;
 
 }
-.column1 {
+.columnCheckbox {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80px;
 }
-.column2 {
+.columnDescription {
     display: flex;
     justify-content: left;
     align-items: center;
     width: 937px;
 }
 
-.column3 {
+.columnStatus {
     display: flex;
     justify-content: left;
     align-items: center;
     width: 151px;
 }
-.textWork {
+
+.paddingForText{
+    padding-left: 20px;
+}
+
+.textDone {
     padding-left: 20px;
     color: #134EC1;
 }
-.textDone {
+.textWork {
     padding-left: 20px;
     color: #F89B11;
 }
 
-.column4 {
+.columnDate {
     display: flex;
     justify-content: left;
     align-items: center;
