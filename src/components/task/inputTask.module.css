@@ -15,7 +15,11 @@ input[type="checkbox"] {
     border: 1px #16191D solid;
     border-radius: 20px;
 }
-.checkbox--active {
-    border-color: #134EC1;
+.checkboxActive {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
     background: white;
+    border: 1px #134EC1 solid;
+    border-radius: 20px;
 }

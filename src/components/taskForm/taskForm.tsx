@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import {useActions} from "../../hooks/action";
 import {Field, Form, Formik, FormikHelpers} from "formik";
-import './taskForm.css'
+import style from './taskForm.module.css'
 import {MinusIcon} from "../../images/minusIcon";
 
 interface IFormValues {
@@ -27,11 +27,11 @@ export const TaskForm: FC<IProps> = ({isModal, setModal}) => {
     }
 
     return (
-        <div className={isModal ? 'modal active' : 'modal'} onClick={hideModal}>
-            <div className={isModal ? 'modalContent active' : 'modalContent'} onClick={e => e.stopPropagation()}>
-                <div className='header containerModal'>
-                    <h2>Создать новую задачу</h2>
-                    <button className='invisibleButton' onClick={hideModal}>
+        <div className={isModal ? style.modalActive : style.modal} onClick={hideModal}>
+            <div className={isModal ? style.modalContentActive : style.modalContent} onClick={e => e.stopPropagation()}>
+                <div className={style.containerModal}>
+                    <h3 className={style.leftPaddingHeader}>Создать новую задачу</h3>
+                    <button className={style.invisibleButton} onClick={hideModal}>
                         <MinusIcon/>
                     </button>
                 </div>
@@ -41,11 +41,11 @@ export const TaskForm: FC<IProps> = ({isModal, setModal}) => {
             }}
             onSubmit={onSubmitForm}>
             {({errors, touched}) => (
-                <Form className='containerModal'>
-                    <p className='textDescription'>Описание</p>
-                    <div className='form'>
-                        <Field className='input' id="task" name="task" placeholder='Введите описание'/>
-                        <button className='buttonAdd' type="submit"><p className='textCreate'>Создать</p></button>
+                <Form>
+                    <p className={style.textDescription}>Описание</p>
+                    <div className={style.form}>
+                        <Field className={style.input} id="task" name="task" placeholder='Введите описание'/>
+                        <button className={style.buttonAdd} type="submit"><p className={style.textCreate}>Создать</p></button>
                     </div>
                 </Form>
             )}

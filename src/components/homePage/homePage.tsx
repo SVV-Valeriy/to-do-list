@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useAppSelector} from "../../hooks/redux";
 import {Task} from "../task/task";
 import {TaskForm} from "../taskForm/taskForm";
-import './homePage.css'
+import style from './homePage.module.css'
 import {PlusIcon} from '../../images/plusIcon'
 import {Magnifier} from "../../images/magnifier";
 import {Arrow} from "../../images/arrow";
@@ -74,25 +74,22 @@ export const HomePage = () => {
         return description.toLowerCase().includes(value.toLowerCase()) || String(date).toLowerCase().includes(value.toLowerCase())
     })
 
-    const tasksElement = filteredTasks.map(({description, status, date, id}) => <Task
-        key={id} status={status}
-        description={description}
-        date={date} id={id}/>)
-
+    const tasksElement = filteredTasks.map(({description, status, date, id}) => (
+        <Task key={id} status={status} description={description} date={date} id={id}/>))
 
     return (
-        <div className='container'>
-            <div className='header'>
+        <div className={style.container}>
+            <div className={style.header}>
                 <h1>To do list</h1>
-                <button className='invisibleButton' onClick={showModal}>
+                <button className={style.invisibleButton} onClick={showModal}>
                     <PlusIcon/>
                 </button>
             </div>
-            <div className='searchAndSort'>
-                <div className='search'>
-                    <p className='magnifyingIndent'><Magnifier/></p>
+            <div className={style.searchAndSort}>
+                <div className={style.search}>
+                    <p className={style.magnifyingIndent}><Magnifier/></p>
                     <form>
-                        <input className='inputSearch'
+                        <input className={style.inputSearch}
                                type='text'
                                placeholder='Поиск...'
                                onChange={(event) => setValue(event.target.value)}
@@ -102,25 +99,25 @@ export const HomePage = () => {
             </div>
             <table>
                 <thead>
-                <tr className='table'>
-                    <th className='columnCheckbox'></th>
-                    <th className='columnDescription'>
+                <tr className={style.table}>
+                    <th className={style.columnCheckbox}></th>
+                    <th className={style.columnDescription}>
                         <p onClick={() => settingDescription('', true, true)}
-                           className='borderLeft'>Описание</p>
+                           className={style.borderLeft}>Описание</p>
                     </th>
-                    <th className='columnStatus'>
+                    <th className={style.columnStatus}>
                         <p onClick={() => settingStatus('status', false)}
-                           className='borderLeft'>Статус</p>
-                        <button className='invisibleButtonForTable'
+                           className={style.borderLeft}>Статус</p>
+                        <button className={style.invisibleButtonForTable}
                                 onClick={() => setSortOrderStatus(!sortOrderStatus)}>
-                            <Arrow coup={sortOrderStatus ? '' : 'coup'}/>
+                            <Arrow coup={sortOrderStatus ? '' : style.coup}/>
                         </button>
                     </th>
-                    <th className='columnDate'>
+                    <th className={style.columnDate}>
                         <p onClick={() => settingDate('date', false)}
-                           className='borderLeft'>Дата</p>
-                        <button className='invisibleButtonForTable' onClick={() => setSortOrderDate(!sortOrderDate)}>
-                            <Arrow coup={sortOrderDate ? '' : 'coup'}/>
+                           className={style.borderLeft}>Дата</p>
+                        <button className={style.invisibleButtonForTable} onClick={() => setSortOrderDate(!sortOrderDate)}>
+                            <Arrow coup={sortOrderDate ? '' : style.coup}/>
                         </button>
                     </th>
                 </tr>
