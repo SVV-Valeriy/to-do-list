@@ -5,7 +5,7 @@ import {InputTask} from "./inputTask";
 interface IProps {
     status: boolean
     description: string
-    date: string
+    date: Date
     id: number
 }
 

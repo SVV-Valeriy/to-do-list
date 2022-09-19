@@ -2,14 +2,14 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 const LS_TASK_KEY = 'localTasks'
 
-interface ITask {
+export interface ITask {
     id: number
     description: string
     status: boolean
-    date: string
+    date: Date
 }
 
-interface ITaskList {
+export interface ITaskList {
     tasks: Array<ITask>
 }
 
@@ -20,55 +20,55 @@ const initialState: ITaskList = {
                 id: 1,
                 description: 'Размещение новостей на сайте',
                 status: true,
-                date: '2022.04.22' // переделать формат
+                date: new Date('2022.04.22')
             },
             {
                 id: 2,
                 description: 'Внедрить Wi-FI для читателей',
                 status: false,
-                date: '2022.03.25'
+                date: new Date('2022.03.25')
             },
             {
                 id: 3,
                 description: 'Отредактировать раздел "Доступная среда"',
                 status: true,
-                date: '2022.03.15'
+                date: new Date('2022.03.15')
             },
             {
                 id: 4,
                 description: 'Презентация "Информационные технологии"',
                 status: false,
-                date: '2022.03.15'
+                date: new Date('2022.03.15')
             },
             {
                 id: 5,
                 description: 'Счётчики - внедрить дизайн',
                 status: false,
-                date: '2022.03.09'
+                date: new Date('2022.03.09')
             },
             {
                 id: 6,
                 description: 'Сверстать новый layout',
                 status: false,
-                date: '2022.03.07'
+                date: new Date('2022.03.07')
             },
             {
                 id: 7,
                 description: 'Скролл в новостях',
                 status: true,
-                date: '2022.03.01'
+                date: new Date('2022.03.01')
             },
             {
                 id: 8,
                 description: 'Форма сброса пароля',
                 status: false,
-                date: '2022.02.25'
+                date: new Date('2022.02.25')
             },
             {
                 id: 9,
                 description: 'Внедрение модуля Chat',
                 status: false,
-                date: '2022.02.20'
+                date: new Date('2022.02.20')
             }
         ]
 }
@@ -94,7 +94,6 @@ export const taskSlice = createSlice({
                 status: false,
                 date: new Date()
             }
-            // @ts-ignore
             state.tasks.unshift(newTask)
             localStorage.setItem(LS_TASK_KEY, JSON.stringify(state.tasks))
         }

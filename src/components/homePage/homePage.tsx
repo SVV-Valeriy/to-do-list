@@ -21,19 +21,18 @@ export const HomePage = () => {
         setModal(true)
     }
 
-    const sortForStatus = [...tasks].sort((a: any, b: any) => {
+    const sortForStatus = [...tasks].sort((a, b) => {
         if (sortOrderStatus)
-            return a.status - b.status
+            return Number(a.status) - Number(b.status)
         else
-            return b.status - a.status
+            return Number(b.status) - Number(a.status)
     })
 
-    const sortDate = [...tasks].sort(function (a, b) {
-        // @ts-ignore
-        if (sortOrderDate) { // @ts-ignore
-            return new Date(b.date) - new Date(a.date);
-                } else { // @ts-ignore
-            return new Date(a.date) - new Date(b.date);
+    const sortDate = [...tasks].sort((a, b) => {
+        if (sortOrderDate) {
+            return Number(new Date(b.date)) - Number(new Date(a.date))
+        } else {
+            return Number(new Date(a.date)) - Number(new Date(b.date))
         }
     })
 
@@ -71,8 +70,8 @@ export const HomePage = () => {
         return tasks
     }
 
-    const filteredTasks = forTask(sort).filter(task => {
-        return task.description.toLowerCase().includes(value.toLowerCase()) || task.date.toLowerCase().includes(value.toLowerCase())
+    const filteredTasks = forTask(sort).filter(({description, date}) => {
+        return description.toLowerCase().includes(value.toLowerCase()) || String(date).toLowerCase().includes(value.toLowerCase())
     })
 
     const tasksElement = filteredTasks.map(({description, status, date, id}) => <Task
