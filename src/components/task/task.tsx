@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import '../task/task.css'
+import style from './task.module.css'
 import {InputTask} from "./inputTask";
 
 interface IProps {
@@ -11,15 +11,15 @@ interface IProps {
 
 export const Task: FC<IProps> = ({status, description, date, id}) => {
     return (
-        <tr className='table' key={description}>
-            <th className='columnCheckbox'>
+        <tr className={style.table} key={description}>
+            <th className={style.columnCheckbox}>
               <InputTask id={id} status={status}/>
             </th>
-            <th className='columnDescription'><p className='paddingForText'>{description}</p></th>
-            <th className='columnStatus'>
-                <p className={status ? 'textDone' : 'textWork'}>{status ? 'Выполнено' : 'В работе'}</p>
+            <th className={style.columnDescription}><p className={style.paddingForText}>{description}</p></th>
+            <th className={style.columnStatus}>
+                <p className={status ? style.textDone : style.textWork}>{status ? 'Выполнено' : 'В работе'}</p>
             </th>
-            <th className='columnDate'><p className='paddingForText'>{new Date(date).toLocaleDateString()}</p></th>
+            <th className={style.columnDate}><p className={style.paddingForText}>{date.toLocaleDateString()}</p></th>
         </tr>
     )
 }
