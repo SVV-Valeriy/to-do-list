@@ -1,0 +1,111 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    margin: auto;
+    width: 1300px;
+    height: 531px;
+}
+
+h1 {
+    font-weight: bold;
+    padding-left: 30px;
+}
+
+.searchAndSort {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.magnifyingIndent {
+    padding-left: 30px;
+    padding-right: 16px;
+    padding-top: 6px;
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.invisibleButton {
+    background: transparent;
+    border: none;
+    font-size: 0;
+    padding: 0;
+}
+
+.inputSearch {
+    border: 0;
+    width: 217px;
+    height: 18px;
+    padding: 0;
+}
+
+.table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 58px;
+    border-bottom: 1px solid #EEEBE9;
+    max-width: 1300px;
+
+}
+
+.columnCheckbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+}
+
+.columnDescription {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 937px;
+}
+
+.columnStatus {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 151px;
+}
+
+.columnDate {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 130px;
+
+}
+
+.borderLeft {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 32px;
+    padding-left: 20px;
+    border-left: 1px solid #C4C4C4;
+    cursor: pointer;
+}
+
+.invisibleButtonForTable {
+    background: transparent;
+    border: none;
+    font-size: 0;
+    padding-left: 30px;
+    cursor: pointer;
+}
+.coup {
+    transform: rotate(180deg);
+}

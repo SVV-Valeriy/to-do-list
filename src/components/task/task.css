@@ -1,0 +1,55 @@
+.table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 58px;
+    border-bottom: 1px solid #EEEBE9;
+
+}
+.columnCheckbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+}
+.columnDescription {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 937px;
+}
+
+.columnStatus {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 151px;
+}
+
+.paddingForText{
+    padding-left: 20px;
+}
+
+.textDone {
+    padding-left: 20px;
+    color: #134EC1;
+}
+.textWork {
+    padding-left: 20px;
+    color: #F89B11;
+}
+
+.columnDate {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 130px;
+}
+.borderLeft {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 32px;
+    padding-left: 20px;
+    border-left: 1px solid #C4C4C4;
+}
