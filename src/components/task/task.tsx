@@ -11,7 +11,7 @@ interface IProps {
 
 export const Task: FC<IProps> = ({status, description, date, id}) => {
     return (
-        <tr className={style.table} key={description}>
+        <tr className={style.table} key={id}>
             <th className={style.columnCheckbox}>
               <InputTask id={id} status={status}/>
             </th>
@@ -19,7 +19,7 @@ export const Task: FC<IProps> = ({status, description, date, id}) => {
             <th className={style.columnStatus}>
                 <p className={status ? style.textDone : style.textWork}>{status ? 'Выполнено' : 'В работе'}</p>
             </th>
-            <th className={style.columnDate}><p className={style.paddingForText}>{date.toLocaleDateString()}</p></th>
+            <th className={style.columnDate}><p className={style.paddingForText}>{new Date(date).toLocaleDateString()}</p></th>
         </tr>
     )
 }

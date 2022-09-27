@@ -14,7 +14,7 @@ export interface ITaskList {
 }
 
 const initialState: ITaskList = {
-    tasks:
+    tasks: JSON.parse(<string>localStorage.getItem('localTasks')) ??
         [
             {
                 id: 1,
