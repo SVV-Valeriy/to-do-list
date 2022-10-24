@@ -14,7 +14,8 @@ export interface ITaskList {
 }
 
 const initialState: ITaskList = {
-    tasks: JSON.parse(<string>localStorage.getItem('localTasks')) ??
+    // tasks: JSON.parse(<string>localStorage.getItem('localTasks')) ??
+    tasks:
         [
             {
                 id: 1,
@@ -95,6 +96,13 @@ export const taskSlice = createSlice({
                 date: new Date()
             }
             state.tasks.unshift(newTask)
+            localStorage.setItem(LS_TASK_KEY, JSON.stringify(state.tasks))
+        },
+        deleteTask(state, action: PayloadAction<ITask>) {
+            const task = state.tasks.findIndex(n => n.id === action.payload.id)
+            if (task !== -1) {
+                state.tasks.splice(task, 1)
+            }
             localStorage.setItem(LS_TASK_KEY, JSON.stringify(state.tasks))
         }
     }

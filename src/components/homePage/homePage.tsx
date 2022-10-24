@@ -6,6 +6,7 @@ import style from './homePage.module.css'
 import {PlusIcon} from '../../images/plusIcon'
 import {Magnifier} from "../../images/magnifier";
 import {Arrow} from "../../images/arrow";
+import classNames from 'classnames';
 
 export const HomePage = () => {
 
@@ -120,6 +121,7 @@ export const HomePage = () => {
                             <Arrow coup={sortOrderDate ? '' : style.coup}/>
                         </button>
                     </th>
+                    <th className={classNames(style.columnDelete, style.borderLeftForDelete)}></th>
                 </tr>
                 </thead>
                 <tbody>

@@ -4,7 +4,7 @@
     align-items: center;
     height: 58px;
     border-bottom: 1px solid #EEEBE9;
-
+    max-width: 1300px;
 }
 .columnCheckbox {
     display: flex;
@@ -31,12 +31,15 @@
 }
 
 .textDone {
-    padding-left: 20px;
+    padding-left: 19px;
     color: #134EC1;
 }
 .textWork {
-    padding-left: 20px;
+    padding-left: 19px;
     color: #F89B11;
+}
+.paddingForDate{
+    padding-left: 19px;
 }
 
 .columnDate {
@@ -45,6 +48,22 @@
     align-items: center;
     width: 130px;
 }
+
+.columnDelete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+}
+
+.invisibleButton {
+    background: transparent;
+    border: none;
+    font-size: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
 .borderLeft {
     display: flex;
     justify-content: left;

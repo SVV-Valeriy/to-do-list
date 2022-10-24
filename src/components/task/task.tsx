@@ -1,6 +1,8 @@
 import React, {FC} from "react";
 import style from './task.module.css'
 import {InputTask} from "./inputTask";
+import {useActions} from "../../hooks/action";
+import {Trash} from "../../images/trash";
 
 interface IProps {
     status: boolean
@@ -10,6 +12,13 @@ interface IProps {
 }
 
 export const Task: FC<IProps> = ({status, description, date, id}) => {
+
+    const {deleteTask} = useActions()
+
+    const delete123 = (id: number) => {
+        deleteTask({id})
+    }
+
     return (
         <tr className={style.table} key={id}>
             <th className={style.columnCheckbox}>
@@ -19,7 +28,12 @@ export const Task: FC<IProps> = ({status, description, date, id}) => {
             <th className={style.columnStatus}>
                 <p className={status ? style.textDone : style.textWork}>{status ? 'Выполнено' : 'В работе'}</p>
             </th>
-            <th className={style.columnDate}><p className={style.paddingForText}>{new Date(date).toLocaleDateString()}</p></th>
+            <th className={style.columnDate}><p className={style.paddingForDate}>{new Date(date).toLocaleDateString()}</p></th>
+            <th className={style.columnDelete}>
+                <button className={style.invisibleButton} onClick={() => delete123(id)}>
+                    <Trash/>
+                </button>
+            </th>
         </tr>
     )
 }
