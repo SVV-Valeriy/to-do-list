@@ -15,10 +15,6 @@ export const Task: FC<IProps> = ({status, description, date, id}) => {
 
     const {deleteTask} = useActions()
 
-    const delete123 = (id: number) => {
-        deleteTask({id})
-    }
-
     return (
         <tr className={style.table} key={id}>
             <th className={style.columnCheckbox}>
@@ -30,7 +26,7 @@ export const Task: FC<IProps> = ({status, description, date, id}) => {
             </th>
             <th className={style.columnDate}><p className={style.paddingForDate}>{new Date(date).toLocaleDateString()}</p></th>
             <th className={style.columnDelete}>
-                <button className={style.invisibleButton} onClick={() => delete123(id)}>
+                <button className={style.invisibleButton} onClick={() => deleteTask({id})}>
                     <Trash/>
                 </button>
             </th>

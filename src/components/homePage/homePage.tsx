@@ -101,7 +101,7 @@ export const HomePage = () => {
             <table>
                 <thead>
                 <tr className={style.table}>
-                    <th className={style.columnCheckbox}></th>
+                    <th className={style.columnCheckbox}/>
                     <th className={style.columnDescription}>
                         <p onClick={() => settingDescription('', true, true)}
                            className={style.borderLeft}>Описание</p>
@@ -121,7 +121,7 @@ export const HomePage = () => {
                             <Arrow coup={sortOrderDate ? '' : style.coup}/>
                         </button>
                     </th>
-                    <th className={classNames(style.columnDelete, style.borderLeftForDelete)}></th>
+                    <th className={classNames(style.columnDelete, style.borderLeftForDelete)}/>
                 </tr>
                 </thead>
                 <tbody>

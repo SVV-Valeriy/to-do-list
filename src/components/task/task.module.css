@@ -72,3 +72,6 @@
     padding-left: 20px;
     border-left: 1px solid #C4C4C4;
 }
+
+@media (max-width: 320px) {
+}
