@@ -41,6 +41,7 @@ h1 {
     border: none;
     font-size: 0;
     padding: 0;
+    cursor: pointer;
 }
 
 .inputSearch {
@@ -124,37 +125,7 @@ h1 {
     transform: rotate(180deg);
 }
 
-/*@media (max-width: 768px) {*/
-/*    .table {*/
-/*        display: flex;*/
-/*        justify-content: center;*/
-/*        align-items: center;*/
-/*        height: 58px;*/
-/*        border-bottom: 1px solid #EEEBE9;*/
-/*        max-width: 1300px;*/
-/*    }*/
-/*    .columnDescription {*/
-/*        display: flex;*/
-/*        justify-content: left;*/
-/*        align-items: center;*/
-/*        width: 937px;*/
-/*    }*/
-/*}*/
+@media (max-width: 320px) {
+}
 
-/*@media (max-width: 320px) {*/
-/*    .table {*/
-/*        display: flex;*/
-/*        justify-content: center;*/
-/*        align-items: center;*/
-/*        height: 58px;*/
-/*        border-bottom: 1px solid #EEEBE9;*/
-/*        max-width: 400px;*/
-/*    }*/
-/*    .columnDescription {*/
-/*        display: flex;*/
-/*        justify-content: left;*/
-/*        align-items: center;*/
-/*        width: 300px;*/
-/*    }*/
-/*}*/
 

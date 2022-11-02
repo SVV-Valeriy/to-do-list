@@ -11,15 +11,11 @@ export const InputTask: FC<IProps> = ({status, id}) => {
 
     const {changeTask} = useActions()
 
-    const changeStatus = (id: number, status: boolean) => {
-        changeTask({id, status})
-    }
-
     return (
         <label>
             <input
                 type="checkbox"
-                onChange={() => changeStatus(id, !status)}
+                onChange={() => changeTask({id, status})}
             />
             <svg
                 className={status ? style.checkboxActive : style.checkbox}

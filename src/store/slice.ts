@@ -14,8 +14,8 @@ export interface ITaskList {
 }
 
 const initialState: ITaskList = {
-    // tasks: JSON.parse(<string>localStorage.getItem('localTasks')) ??
-    tasks:
+    tasks: JSON.parse(<string>localStorage.getItem('localTasks')) ??
+    // tasks:
         [
             {
                 id: 1,
@@ -81,7 +81,7 @@ export const taskSlice = createSlice({
         changeTask(state, action: PayloadAction<ITask>) {
             state.tasks.map(task => {
                 if (task.id === Number(action.payload.id)) {
-                    task.status = action.payload.status
+                    task.status = !action.payload.status
                 }
 
                 return task
