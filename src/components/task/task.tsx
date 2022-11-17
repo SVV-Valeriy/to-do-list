@@ -19,7 +19,7 @@ export const Task: FC<IProps> = ({status, description, date, id}) => {
     const [isActive, setActive] = useState(false)
 
     return (
-        <div>
+        <>
             <tr className={style.table} key={id}>
                 <th className={style.columnCheckbox}>
                     <InputTask id={id} status={status}/>
@@ -45,6 +45,6 @@ export const Task: FC<IProps> = ({status, description, date, id}) => {
             </tr>
             {isActive &&
             <ChangeTask status={status} date={date}/>}
-        </div>
+        </>
     )
 }
