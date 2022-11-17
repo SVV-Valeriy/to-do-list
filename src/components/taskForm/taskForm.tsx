@@ -23,7 +23,6 @@ export const TaskForm: FC<IProps> = ({isModal, setModal}) => {
 
     const onSubmitForm = (values: IFormValues, {resetForm}: FormikHelpers<IFormValues>) => {
         addTask({description: values.task})
-        setModal(false)
         resetForm()
     }
 

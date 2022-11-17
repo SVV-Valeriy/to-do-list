@@ -125,53 +125,7 @@ h1 {
     transform: rotate(180deg);
 }
 
-@media (max-width: 768px) {
-    .container {
-        width: 400px;
-        height: 531px;
-    }
-    h1 {
-        font-weight: bold;
-        padding-left: 0;
-    }
-    .magnifyingIndent {
-        padding-left: 0;
-        padding-right: 16px;
-        padding-top: 6px;
-        margin: 0;
-    }
-    .table {
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        height: 58px;
-        border-bottom: 1px solid #EEEBE9;
-        max-width: 450px;
-    }
-    .columnCheckbox {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-    }
-    .columnDescription {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        width: 320px;
-    }
-    .columnStatus {
-        display: none;
-    }
-    .columnDate {
-        display: none;
-    }
-    .columnDelete {
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        width: 40px;
-    }
+@media (max-width: 320px) {
 }
 
 
