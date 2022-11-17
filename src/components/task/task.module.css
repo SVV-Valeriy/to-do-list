@@ -6,15 +6,12 @@
     border-top: 1px solid #EEEBE9;
     max-width: 1300px;
 }
-
 .columnCheckbox {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80px;
-    margin-top: 5px;
 }
-
 .columnDescription {
     display: flex;
     justify-content: left;
@@ -37,7 +34,7 @@
     width: 151px;
 }
 
-.paddingForText {
+.paddingForText{
     padding-left: 20px;
 }
 
@@ -45,13 +42,11 @@
     padding-left: 19px;
     color: #134EC1;
 }
-
 .textWork {
     padding-left: 19px;
     color: #F89B11;
 }
-
-.paddingForDate {
+.paddingForDate{
     padding-left: 19px;
 }
 
@@ -111,13 +106,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        text-align:center;
+        text-align: center;
         margin: 0 auto;
     }
 
     .coup {
         display: block;
-        text-align:center;
+        text-align: center;
         transform: rotate(180deg);
         margin: 0 auto;
     }
