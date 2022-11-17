@@ -6,15 +6,12 @@
     border-bottom: 1px solid #EEEBE9;
     max-width: 1300px;
 }
-
 .columnCheckbox {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80px;
-    margin-top: 5px;
 }
-
 .columnDescription {
     display: flex;
     justify-content: left;
@@ -29,7 +26,7 @@
     width: 151px;
 }
 
-.paddingForText {
+.paddingForText{
     padding-left: 20px;
 }
 
@@ -37,13 +34,11 @@
     padding-left: 19px;
     color: #134EC1;
 }
-
 .textWork {
     padding-left: 19px;
     color: #F89B11;
 }
-
-.paddingForDate {
+.paddingForDate{
     padding-left: 19px;
 }
 
@@ -78,48 +73,5 @@
     border-left: 1px solid #C4C4C4;
 }
 
-@media (max-width: 768px) {
-    .table {
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        height: 58px;
-        border-bottom: 1px solid #EEEBE9;
-        max-width: 768px;
-    }
-
-    .columnCheckbox {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        margin-top: 5px;
-    }
-
-    .columnDescription {
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        text-align: left;
-        width: 320px;
-    }
-
-    .columnStatus {
-        display: none;
-    }
-
-    .columnDate {
-        display: none;
-    }
-
-    .columnDelete {
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        width: 40px;
-    }
-
-    .paddingForText {
-        padding-left: 0;
-    }
+@media (max-width: 320px) {
 }
