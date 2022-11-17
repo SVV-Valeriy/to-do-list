@@ -16,64 +16,64 @@ export interface ITaskList {
 const initialState: ITaskList = {
     tasks:
         JSON.parse(<string>localStorage.getItem('localTasks'))
-        ??
+        // ??
     // tasks:
-        [
-            {
-                id: 1,
-                description: 'Размещение новостей на сайте',
-                status: true,
-                date: new Date('2022.04.22')
-            },
-            {
-                id: 2,
-                description: 'Внедрить Wi-FI для читателей',
-                status: false,
-                date: new Date('2022.03.25')
-            },
-            {
-                id: 3,
-                description: 'Отредактировать раздел "Доступная среда"',
-                status: true,
-                date: new Date('2022.03.15')
-            },
-            {
-                id: 4,
-                description: 'Презентация "Информационные технологии"',
-                status: false,
-                date: new Date('2022.03.15')
-            },
-            {
-                id: 5,
-                description: 'Счётчики - внедрить дизайн',
-                status: false,
-                date: new Date('2022.03.09')
-            },
-            {
-                id: 6,
-                description: 'Сверстать новый layout',
-                status: false,
-                date: new Date('2022.03.07')
-            },
-            {
-                id: 7,
-                description: 'Скролл в новостях',
-                status: true,
-                date: new Date('2022.03.01')
-            },
-            {
-                id: 8,
-                description: 'Форма сброса пароля',
-                status: false,
-                date: new Date('2022.02.25')
-            },
-            {
-                id: 9,
-                description: 'Внедрение модуля Chat',
-                status: false,
-                date: new Date('2022.02.20')
-            }
-        ]
+    //     [
+    //         {
+    //             id: 1,
+    //             description: 'Размещение новостей на сайте',
+    //             status: true,
+    //             date: new Date('2022.04.22')
+    //         },
+    //         {
+    //             id: 2,
+    //             description: 'Внедрить Wi-FI для читателей',
+    //             status: false,
+    //             date: new Date('2022.03.25')
+    //         },
+    //         {
+    //             id: 3,
+    //             description: 'Отредактировать раздел "Доступная среда"',
+    //             status: true,
+    //             date: new Date('2022.03.15')
+    //         },
+    //         {
+    //             id: 4,
+    //             description: 'Презентация "Информационные технологии"',
+    //             status: false,
+    //             date: new Date('2022.03.15')
+    //         },
+    //         {
+    //             id: 5,
+    //             description: 'Счётчики - внедрить дизайн',
+    //             status: false,
+    //             date: new Date('2022.03.09')
+    //         },
+    //         {
+    //             id: 6,
+    //             description: 'Сверстать новый layout',
+    //             status: false,
+    //             date: new Date('2022.03.07')
+    //         },
+    //         {
+    //             id: 7,
+    //             description: 'Скролл в новостях',
+    //             status: true,
+    //             date: new Date('2022.03.01')
+    //         },
+    //         {
+    //             id: 8,
+    //             description: 'Форма сброса пароля',
+    //             status: false,
+    //             date: new Date('2022.02.25')
+    //         },
+    //         {
+    //             id: 9,
+    //             description: 'Внедрение модуля Chat',
+    //             status: false,
+    //             date: new Date('2022.02.20')
+    //         }
+    //     ]
 }
 
 export const taskSlice = createSlice({
