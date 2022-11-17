@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 58px;
-    border-bottom: 1px solid #EEEBE9;
+    border-top: 1px solid #EEEBE9;
     max-width: 1300px;
 }
 
@@ -20,6 +20,14 @@
     justify-content: left;
     align-items: center;
     width: 937px;
+}
+
+.visionArrow {
+    display: none;
+}
+
+.coup {
+    display: none;
 }
 
 .columnStatus {
@@ -67,6 +75,7 @@
     font-size: 0;
     padding: 0;
     cursor: pointer;
+    margin: auto 0;
 }
 
 .borderLeft {
@@ -80,28 +89,37 @@
 
 @media (max-width: 768px) {
     .table {
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        height: 58px;
-        border-bottom: 1px solid #EEEBE9;
+        border-bottom: 0;
         max-width: 768px;
     }
 
     .columnCheckbox {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 40px;
         margin-top: 5px;
     }
 
     .columnDescription {
         display: flex;
-        justify-content: left;
-        align-items: center;
+        justify-content: space-between;
+        align-items: flex-start;
         text-align: left;
         width: 320px;
+        margin: 0;
+    }
+
+    .visionArrow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align:center;
+        margin: 0 auto;
+    }
+
+    .coup {
+        display: block;
+        text-align:center;
+        transform: rotate(180deg);
+        margin: 0 auto;
     }
 
     .columnStatus {
@@ -121,5 +139,6 @@
 
     .paddingForText {
         padding-left: 0;
+        margin: 0;
     }
 }

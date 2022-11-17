@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {useAppSelector} from "../../hooks/redux";
 import {Task} from "../task/task";
-import {TaskForm} from "../taskForm/taskForm";
+import {CreateTask} from "../taskForm/createTask";
 import style from './homePage.module.css'
 import {PlusIcon} from '../../images/plusIcon'
 import {Magnifier} from "../../images/magnifier";
 import {Arrow} from "../../images/arrow";
 import classNames from 'classnames';
+import {ChangeTask} from "../task/changeTask";
 
 export const HomePage = () => {
 
@@ -17,6 +18,9 @@ export const HomePage = () => {
     const [sort, setSort] = useState('')
     const [sortOrderStatus, setSortOrderStatus] = useState(true)
     const [sortOrderDate, setSortOrderDate] = useState(true)
+
+    const [isActive, setActive] = useState(false)
+
 
     const showModal = () => {
         setModal(true)
@@ -128,7 +132,7 @@ export const HomePage = () => {
                 {tasksElement}
                 </tbody>
             </table>
-            {isModal && <TaskForm isModal={isModal} setModal={setModal}/>}
+            {isModal && <CreateTask isModal={isModal} setModal={setModal}/>}
         </div>
     )
 }

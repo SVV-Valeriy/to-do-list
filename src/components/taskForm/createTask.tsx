@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import {useActions} from "../../hooks/action";
 import {Field, Form, Formik, FormikHelpers} from "formik";
-import style from './taskForm.module.css'
+import style from './createTask.module.css'
 import {MinusIcon} from "../../images/minusIcon";
 
 interface IFormValues {
@@ -13,7 +13,7 @@ interface IProps {
     setModal: (boolean: boolean) => void
 }
 
-export const TaskForm: FC<IProps> = ({isModal, setModal}) => {
+export const CreateTask: FC<IProps> = ({isModal, setModal}) => {
 
     const {addTask} = useActions()
 

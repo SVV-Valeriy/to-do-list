@@ -56,7 +56,7 @@ h1 {
     justify-content: center;
     align-items: center;
     height: 58px;
-    border-bottom: 1px solid #EEEBE9;
+    /*border-bottom: 1px solid #EEEBE9;*/
     max-width: 1300px;
 }
 
@@ -145,7 +145,7 @@ h1 {
         justify-content: left;
         align-items: center;
         height: 58px;
-        border-bottom: 1px solid #EEEBE9;
+        /*border-bottom: 1px solid #EEEBE9;*/
         max-width: 450px;
     }
     .columnCheckbox {
