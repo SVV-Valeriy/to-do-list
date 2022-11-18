@@ -22,6 +22,7 @@
 
 @media (max-width: 768px) {
     .vision {
-        display: block;
+        display: flex;
+        flex-direction: column;
     }
 }

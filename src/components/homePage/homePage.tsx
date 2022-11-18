@@ -7,7 +7,6 @@ import {PlusIcon} from '../../images/plusIcon'
 import {Magnifier} from "../../images/magnifier";
 import {Arrow} from "../../images/arrow";
 import classNames from 'classnames';
-import {ChangeTask} from "../task/changeTask";
 
 export const HomePage = () => {
 

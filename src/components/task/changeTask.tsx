@@ -8,9 +8,9 @@ interface IProps {
 
 export const ChangeTask: FC<IProps> = ({status, date}) => {
     return (
-        <td className={style.vision}>
-            <div> <p className={status ? style.textDone : style.textWork}>{status ? 'Выполнено' : 'В работе'}</p></div>
-            <div className={style.text}>Дата: {new Date(date).toLocaleDateString()}</div>
-        </td>
+        <tr className={style.vision}>
+            <td className={status ? style.textDone : style.textWork}>{status ? 'Выполнено' : 'В работе'}</td>
+            <td className={style.text}>Дата:{new Date(date).toLocaleDateString()}</td>
+        </tr>
     )
 }

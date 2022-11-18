@@ -24,13 +24,9 @@ export const Task: FC<IProps> = ({status, description, date, id}) => {
                 <th className={style.columnCheckbox}>
                     <InputTask id={id} status={status}/>
                 </th>
-                <th className={style.columnDescription}><p onClick={() => setActive(!isActive)}
-                                                           className={style.paddingForText}>{description}
-                </p>
-                    <button className={style.invisibleButton}
-                            onClick={() => setActive(!isActive)}>
+                <th onClick={() => setActive(!isActive)} className={style.columnDescription}>
+                        <p className={style.paddingForText}>{description}</p>
                         <Arrow coup={isActive ? style.coup : style.visionArrow}/>
-                    </button>
                 </th>
                 <th className={style.columnStatus}>
                     <p className={status ? style.textDone : style.textWork}>{status ? 'Выполнено' : 'В работе'}</p>

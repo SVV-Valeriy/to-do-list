@@ -6,12 +6,14 @@
     border-top: 1px solid #EEEBE9;
     max-width: 1300px;
 }
+
 .columnCheckbox {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80px;
 }
+
 .columnDescription {
     display: flex;
     justify-content: left;
@@ -34,19 +36,22 @@
     width: 151px;
 }
 
-.paddingForText{
+.paddingForText {
     padding-left: 20px;
+    font-size: 16px;
 }
 
 .textDone {
     padding-left: 19px;
     color: #134EC1;
 }
+
 .textWork {
     padding-left: 19px;
     color: #F89B11;
 }
-.paddingForDate{
+
+.paddingForDate {
     padding-left: 19px;
 }
 
@@ -69,8 +74,11 @@
     border: none;
     font-size: 0;
     padding: 0;
-    cursor: pointer;
     margin: auto 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-decoration: none;
 }
 
 .borderLeft {
@@ -95,26 +103,35 @@
 
     .columnDescription {
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
         align-items: flex-start;
         text-align: left;
         width: 320px;
         margin: 0;
+        text-decoration: none;
+    }
+
+    .invisibleButton {
+        color: #16191D;
+        cursor: pointer;
     }
 
     .visionArrow {
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
-        text-align: center;
-        margin: 0 auto;
+        text-align: right;
+        margin: 2px 0 0 0;
+        color: #16191D;
     }
 
     .coup {
         display: block;
-        text-align: center;
+        text-align: right;
         transform: rotate(180deg);
-        margin: 0 auto;
+        margin: 2px 0 0 0;
+        color: #16191D;
     }
 
     .columnStatus {
@@ -133,7 +150,13 @@
     }
 
     .paddingForText {
+        display: flex;
+        justify-content: flex-start;
+        text-align: left;
         padding-left: 0;
         margin: 0;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
     }
 }
