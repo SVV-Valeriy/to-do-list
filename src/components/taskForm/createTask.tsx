@@ -1,8 +1,9 @@
 import React, {FC} from "react";
 import {useActions} from "../../hooks/action";
-import {Field, Form, Formik, FormikHelpers} from "formik";
+import {ErrorMessage, Field, Form, Formik, FormikHelpers, useFormikContext} from "formik";
 import style from './createTask.module.css'
 import {MinusIcon} from "../../images/minusIcon";
+import classNames from "classnames";
 
 interface IFormValues {
     task: string
@@ -11,6 +12,11 @@ interface IFormValues {
 interface IProps {
     isModal: boolean
     setModal: (boolean: boolean) => void
+}
+
+const AutoValues = () => {
+    const { values } = useFormikContext<IFormValues>()
+    return null
 }
 
 export const CreateTask: FC<IProps> = ({isModal, setModal}) => {
@@ -37,16 +43,27 @@ export const CreateTask: FC<IProps> = ({isModal, setModal}) => {
                     </button>
                 </div>
         <Formik
-            initialValues={{
-                task: ''
+            initialValues={{ task: '' }}
+            validate={values => {
+                const errors = {
+                    task: ''
+                }
+                if (values.task === '') {
+                    errors.task = 'Введите описание';
+                }
+                return errors
             }}
             onSubmit={onSubmitForm}>
-            {({errors, touched}) => (
+            {({errors, touched, values}) => (
                 <Form>
                     <p className={style.textDescription}>Описание</p>
                     <div className={style.form}>
-                        <Field className={style.input} id="task" name="task" placeholder='Введите описание'/>
-                        <button className={style.buttonAdd} type="submit"><p className={style.textCreate}>Создать</p></button>
+                        <Field className={errors.task ? style.inputErrors : style.input}
+                               type='text' id='task' name='task' placeholder='Введите описание'/>
+                        <AutoValues />
+                        <ErrorMessage component='div' className={style.error} name='task' />
+                        <button className={values.task ? style.buttonAddFilled : style.buttonAdd} type='submit'>
+                            <p className={values.task ? style.textCreateFilled : style.textCreate}>Создать</p></button>
                     </div>
                 </Form>
             )}
