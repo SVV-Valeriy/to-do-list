@@ -39,12 +39,12 @@ export const HomePage = () => {
 
     const settingStatus = (sort: string, sortOrderStatus: boolean) => {
         setSort('status')
-        setSortOrderStatus(false)
+        setSortOrderStatus(sortOrderStatus)
     }
 
     const settingDate = (sort: string, sortOrderDate: boolean) => {
         setSort('date')
-        setSortOrderDate(false)
+        setSortOrderDate(sortOrderDate)
     }
 
     const settingDescription = (sort: string, sortOrderDate: boolean, sortOrderStatus: boolean) => {
@@ -106,20 +106,13 @@ export const HomePage = () => {
                         <p onClick={() => settingDescription('', true, true)}
                            className={style.borderLeft}>Описание</p>
                     </th>
-                    <th className={style.columnStatus}>
-                        <p onClick={() => settingStatus('status', false)}
-                           className={style.borderLeft}>Статус</p>
-                        <button className={style.invisibleButtonForTable}
-                                onClick={() => setSortOrderStatus(!sortOrderStatus)}>
-                            <Arrow coup={sortOrderStatus ? '' : style.coup}/>
-                        </button>
+                    <th className={style.columnStatus} onClick={() => settingStatus('status', !sortOrderStatus)}>
+                        <p className={style.borderLeft}>Статус</p>
+                        <Arrow coup={sortOrderStatus ? style.vision : style.coup}/>
                     </th>
-                    <th className={style.columnDate}>
-                        <p onClick={() => settingDate('date', false)}
-                           className={style.borderLeft}>Дата</p>
-                        <button className={style.invisibleButtonForTable} onClick={() => setSortOrderDate(!sortOrderDate)}>
-                            <Arrow coup={sortOrderDate ? '' : style.coup}/>
-                        </button>
+                    <th className={style.columnDate} onClick={() => settingDate('date', !sortOrderDate)}>
+                        <p className={style.borderLeft}>Дата</p>
+                        <Arrow coup={sortOrderDate ? style.vision : style.coup}/>
                     </th>
                     <th className={classNames(style.columnDelete, style.borderLeftForDelete)}/>
                 </tr>
