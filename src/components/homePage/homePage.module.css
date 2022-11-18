@@ -75,16 +75,18 @@ h1 {
 
 .columnStatus {
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
     width: 151px;
+    cursor: pointer;
 }
 
 .columnDate {
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
     width: 130px;
+    cursor: pointer;
 }
 
 .columnDelete {
@@ -120,7 +122,15 @@ h1 {
     padding-left: 30px;
     cursor: pointer;
 }
+
+.vision {
+    display: flex;
+    padding-right: 20px;
+}
+
 .coup {
+    display: flex;
+    padding-left: 20px;
     transform: rotate(180deg);
 }
 
