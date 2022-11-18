@@ -10,7 +10,7 @@ export const ChangeTask: FC<IProps> = ({status, date}) => {
     return (
         <tr className={style.vision}>
             <td className={status ? style.textDone : style.textWork}>{status ? 'Выполнено' : 'В работе'}</td>
-            <td className={style.text}>Дата:{new Date(date).toLocaleDateString()}</td>
+            <td className={style.text}>Дата: {new Date(date).toLocaleDateString()}</td>
         </tr>
     )
 }
