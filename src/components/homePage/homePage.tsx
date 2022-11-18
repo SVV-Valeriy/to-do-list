@@ -7,19 +7,16 @@ import {PlusIcon} from '../../images/plusIcon'
 import {Magnifier} from "../../images/magnifier";
 import {Arrow} from "../../images/arrow";
 import classNames from 'classnames';
+import {EmptyTask} from "../task/emptyTask";
 
 export const HomePage = () => {
 
     const {tasks} = useAppSelector(state => state.task)
-
     const [isModal, setModal] = useState(false)
     const [value, setValue] = useState('')
     const [sort, setSort] = useState('')
     const [sortOrderStatus, setSortOrderStatus] = useState(true)
     const [sortOrderDate, setSortOrderDate] = useState(true)
-
-    const [isActive, setActive] = useState(false)
-
 
     const showModal = () => {
         setModal(true)
@@ -128,7 +125,10 @@ export const HomePage = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {tasksElement}
+                {tasks.length > 0
+                    ? tasksElement
+                    : <EmptyTask/>
+                }
                 </tbody>
             </table>
             {isModal && <CreateTask isModal={isModal} setModal={setModal}/>}
