@@ -44,6 +44,8 @@ h1 {
     cursor: pointer;
 }
 
+input {outline:none;}
+
 .inputSearch {
     border: 0;
     width: 217px;
