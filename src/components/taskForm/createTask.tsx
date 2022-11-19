@@ -3,10 +3,13 @@ import {useActions} from "../../hooks/action";
 import {ErrorMessage, Field, Form, Formik, FormikHelpers, useFormikContext} from "formik";
 import style from './createTask.module.css'
 import {MinusIcon} from "../../images/minusIcon";
-import classNames from "classnames";
 
 interface IFormValues {
     task: string
+}
+
+interface IErrors {
+    task?: string
 }
 
 interface IProps {
@@ -45,10 +48,8 @@ export const CreateTask: FC<IProps> = ({isModal, setModal}) => {
         <Formik
             initialValues={{ task: '' }}
             validate={values => {
-                const errors = {
-                    task: ''
-                }
-                if (values.task === '') {
+                const errors: IErrors = {}
+                if (values.task.length < 1) {
                     errors.task = 'Введите описание';
                 }
                 return errors
