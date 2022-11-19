@@ -5,6 +5,7 @@ import {CreateTask} from "../taskForm/createTask";
 import style from './homePage.module.css'
 import {PlusIcon} from '../../images/plusIcon'
 import {Magnifier} from "../../images/magnifier";
+import {MarkFilter} from "../../images/markFilter";
 import {Arrow} from "../../images/arrow";
 import classNames from 'classnames';
 import {EmptyTask} from "../task/emptyTask";
@@ -12,6 +13,7 @@ import {EmptyTask} from "../task/emptyTask";
 export const HomePage = () => {
 
     const {tasks} = useAppSelector(state => state.task)
+    const [isSort, showSort] = useState(false)
     const [isModal, setModal] = useState(false)
     const [value, setValue] = useState('')
     const [sort, setSort] = useState('')
@@ -47,7 +49,8 @@ export const HomePage = () => {
         setSortOrderDate(sortOrderDate)
     }
 
-    const settingDescription = (sort: string, sortOrderDate: boolean, sortOrderStatus: boolean) => {
+    const settingDescription = (isSort: boolean, sort: string, sortOrderDate: boolean, sortOrderStatus: boolean) => {
+        showSort(isSort)
         setSort('')
         setSortOrderDate(true)
         setSortOrderStatus(true)
@@ -97,22 +100,34 @@ export const HomePage = () => {
                         />
                     </form>
                 </div>
+                <div className={style.sort}>
+                    <div className={style.sortDescription}>
+                        <p onClick={() => settingDescription(!isSort, '', true, true)}>Сортировать: </p>
+                        <p onClick={() => showSort(!isSort)}
+                           className={isSort ? style.openSort : style.closeSort}>Дата <MarkFilter
+                            markFilter={style.markFilter}/>
+                        </p>
+                        <div className={isSort ? style.closeSort2 : style.openSort}>
+                            <p className={style.filterForStatus}
+                               onClick={() => settingStatus('status', !sortOrderStatus)}>Статус</p>
+                            <p className={style.filterForDate}
+                               onClick={() => settingDate('date', !sortOrderDate)}>Дата</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <table>
                 <thead>
                 <tr className={style.table}>
                     <th className={style.columnCheckbox}/>
                     <th className={style.columnDescription}>
-                        <p onClick={() => settingDescription('', true, true)}
-                           className={style.borderLeft}>Описание</p>
+                        <p className={style.borderLeft}>Описание</p>
                     </th>
-                    <th className={style.columnStatus} onClick={() => settingStatus('status', !sortOrderStatus)}>
+                    <th className={style.columnStatus}>
                         <p className={style.borderLeft}>Статус</p>
-                        <Arrow coup={sortOrderStatus ? style.vision : style.coup}/>
                     </th>
-                    <th className={style.columnDate} onClick={() => settingDate('date', !sortOrderDate)}>
+                    <th className={style.columnDate}>
                         <p className={style.borderLeft}>Дата</p>
-                        <Arrow coup={sortOrderDate ? style.vision : style.coup}/>
                     </th>
                     <th className={classNames(style.columnDelete, style.borderLeftForDelete)}/>
                 </tr>
