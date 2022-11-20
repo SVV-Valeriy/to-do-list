@@ -50,7 +50,6 @@ export const DropDown: FC<IProps> = ({sort, setSort, sortOrderStatus, setSortOrd
                 value={getValue()}
                 options={options}
                 isSearchable={false}
-                menuIsOpen={true}
             />
         </div>
     )
