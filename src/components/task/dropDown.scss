@@ -1,0 +1,21 @@
+.custom-select {
+    &__control {
+        margin-top: 7px;
+        background-color: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        width: 110px;
+        }
+
+    &__menu {
+        max-height: 80px !important;
+    }
+
+    &__option {
+        cursor: pointer !important;
+        &--is-selected {
+            background-color: #314B99 !important;
+        }
+    }
+    }
