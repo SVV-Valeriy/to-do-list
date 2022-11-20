@@ -1,6 +1,6 @@
 import React, {Dispatch, FC, SetStateAction, useState} from 'react';
 import Select from 'react-select';
-import './dropDown.scss'
+import './dropDown.css'
 
 interface IProps {
     sort: string
