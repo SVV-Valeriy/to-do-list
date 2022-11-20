@@ -124,6 +124,9 @@ input {
     width: 937px;
 }
 
+.sortText {
+}
+
 .columnStatus {
     display: flex;
     justify-content: space-between;
@@ -212,6 +215,16 @@ input {
         display: flex;
         justify-content: space-between;
         max-width: 400px;
+    }
+
+    .inputSearch {
+        border: 0;
+        width: 100px;
+        height: 18px;
+        padding: 0;
+    }
+
+    .sortText {
     }
 
     .columnCheckbox {

@@ -5,15 +5,13 @@ import {CreateTask} from "../taskForm/createTask";
 import style from './homePage.module.css'
 import {PlusIcon} from '../../images/plusIcon'
 import {Magnifier} from "../../images/magnifier";
-import {MarkFilter} from "../../images/markFilter";
-import {Arrow} from "../../images/arrow";
 import classNames from 'classnames';
 import {EmptyTask} from "../task/emptyTask";
+import {DropDown} from "../task/dropdown";
 
 export const HomePage = () => {
 
     const {tasks} = useAppSelector(state => state.task)
-    const [isSort, showSort] = useState(false)
     const [isModal, setModal] = useState(false)
     const [value, setValue] = useState('')
     const [sort, setSort] = useState('')
@@ -38,23 +36,6 @@ export const HomePage = () => {
             return Number(new Date(a.date)) - Number(new Date(b.date))
         }
     })
-
-    const settingStatus = (sort: string, sortOrderStatus: boolean) => {
-        setSort('status')
-        setSortOrderStatus(sortOrderStatus)
-    }
-
-    const settingDate = (sort: string, sortOrderDate: boolean) => {
-        setSort('date')
-        setSortOrderDate(sortOrderDate)
-    }
-
-    const settingDescription = (isSort: boolean, sort: string, sortOrderDate: boolean, sortOrderStatus: boolean) => {
-        showSort(isSort)
-        setSort('')
-        setSortOrderDate(true)
-        setSortOrderStatus(true)
-    }
 
     useEffect(() => {
         if (sort === 'date')
@@ -102,17 +83,12 @@ export const HomePage = () => {
                 </div>
                 <div className={style.sort}>
                     <div className={style.sortDescription}>
-                        <p onClick={() => settingDescription(!isSort, '', true, true)}>Сортировать: </p>
-                        <p onClick={() => showSort(!isSort)}
-                           className={isSort ? style.openSort : style.closeSort}>Дата <MarkFilter
-                            markFilter={style.markFilter}/>
-                        </p>
-                        <div className={isSort ? style.closeSort2 : style.openSort}>
-                            <p className={style.filterForStatus}
-                               onClick={() => settingStatus('status', !sortOrderStatus)}>Статус</p>
-                            <p className={style.filterForDate}
-                               onClick={() => settingDate('date', !sortOrderDate)}>Дата</p>
-                        </div>
+                        <p className={style.sortText}>Сортировать: </p>
+                        <DropDown sort={sort} setSort={setSort}
+                                  sortOrderStatus={sortOrderStatus} setSortOrderStatus={setSortOrderStatus}
+                                  sortOrderDate={sortOrderDate}
+                                  setSortOrderDate={setSortOrderDate}
+                        />
                     </div>
                 </div>
             </div>
