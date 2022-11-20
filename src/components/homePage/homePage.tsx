@@ -83,7 +83,7 @@ export const HomePage = () => {
                 </div>
                 <div className={style.sort}>
                     <div className={style.sortDescription}>
-                        <p className={style.sortText}>Сортировать: </p>
+                        <p>Сортировать: </p>
                         <DropDown sort={sort} setSort={setSort}
                                   sortOrderStatus={sortOrderStatus} setSortOrderStatus={setSortOrderStatus}
                                   sortOrderDate={sortOrderDate}
