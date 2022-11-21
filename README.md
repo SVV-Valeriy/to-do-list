@@ -5,7 +5,6 @@
 ## Built With:
  - HTML
  - CSS
- - JavaScript
  - TypeScript
  - React
  - Redux ToolKit
