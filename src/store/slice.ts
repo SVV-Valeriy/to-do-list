@@ -13,10 +13,7 @@ export interface ITaskList {
     tasks: Array<ITask>
 }
 
-const initialState: ITaskList = {
-    tasks:
-        JSON.parse(<string>localStorage.getItem('localTasks')) ?? []
-}
+const initialState: ITaskList = {tasks: JSON.parse(<string>localStorage.getItem('localTasks')) ?? []}
 
 export const taskSlice = createSlice({
     name: 'toDoList',
@@ -43,10 +40,7 @@ export const taskSlice = createSlice({
             localStorage.setItem(LS_TASK_KEY, JSON.stringify(state.tasks))
         },
         deleteTask(state, action: PayloadAction<ITask>) {
-            const task = state.tasks.findIndex(n => n.id === action.payload.id)
-            if (task !== -1) {
-                state.tasks.splice(task, 1)
-            }
+            state.tasks = state.tasks.filter(task => task.id !== action.payload.id)
             localStorage.setItem(LS_TASK_KEY, JSON.stringify(state.tasks))
         }
     }
