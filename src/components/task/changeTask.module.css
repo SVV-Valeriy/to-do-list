@@ -2,22 +2,20 @@
     display: none;
 }
 
-.text {
+.textDate {
     padding-left: 42px;
     font-weight: bold;
     padding-bottom: 10px;
 }
 
-.textDone {
-    padding-left: 42px;
-    color: #134EC1;
-    margin: 0;
-}
-
-.textWork {
+.textStatus {
     padding-left: 42px;
     color: #F89B11;
     margin: 0;
+}
+
+.textDone {
+    color: #134EC1;
 }
 
 @media (max-width: 768px) {

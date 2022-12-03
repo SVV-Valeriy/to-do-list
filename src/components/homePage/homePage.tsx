@@ -37,22 +37,15 @@ export const HomePage = () => {
         }
     })
 
-    useEffect(() => {
-        if (sort === 'date')
-            setSortOrderStatus(true)
-        if (sort === 'status')
-            setSortOrderDate(true)
-    }, [sort])
-
     const forTask = (sort: string) => {
-        if (sort === 'status') {
-            return sortForStatus
+        switch (sort) {
+            case 'status':
+                return sortForStatus
+            case 'date':
+                return sortDate
+            default:
+                return tasks
         }
-        if (sort === 'date') {
-            return sortDate
-        }
-
-        return tasks
     }
 
     const filteredTasks = forTask(sort).filter(({description, date}) => {
@@ -65,7 +58,7 @@ export const HomePage = () => {
     return (
         <div className={style.container}>
             <div className={style.header}>
-                <h1>To do list</h1>
+                <h1 className={style.title}>To do list</h1>
                 <button className={style.invisibleButton} onClick={showModal}>
                     <PlusIcon/>
                 </button>

@@ -41,14 +41,13 @@
     font-size: 16px;
 }
 
-.textDone {
-    padding-left: 19px;
-    color: #134EC1;
-}
-
 .textWork {
     padding-left: 19px;
     color: #F89B11;
+}
+
+.textDone {
+    color: #134EC1;
 }
 
 .paddingForDate {
@@ -103,10 +102,8 @@
     }
 
     .columnDescription {
-        display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: flex-start;
         text-align: left;
         width: 320px;
         margin: 0;
@@ -121,9 +118,10 @@
     .visionArrow {
         display: flex;
         justify-content: flex-end;
+        min-width: 16px;
+        min-height: 16px;
         align-items: center;
         text-align: right;
-        margin: 2px 0 0 0;
         color: #16191D;
     }
 
@@ -131,8 +129,9 @@
         display: block;
         text-align: right;
         transform: rotate(180deg);
-        margin: 2px 0 0 0;
         color: #16191D;
+        min-width: 16px;
+        min-height: 16px;
     }
 
     .columnStatus {
@@ -144,9 +143,7 @@
     }
 
     .columnDelete {
-        display: flex;
         justify-content: left;
-        align-items: center;
         width: 40px;
     }
 

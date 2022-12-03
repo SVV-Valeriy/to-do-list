@@ -1,14 +1,10 @@
-* {
-    font-family: 'Montserrat', sans-serif;
-}
-
 .container {
     margin: auto;
     width: 1300px;
     height: 531px;
 }
 
-h1 {
+.title {
     font-weight: bold;
     padding-left: 30px;
 }
@@ -40,18 +36,6 @@ h1 {
 
 .openSort {
     display: none;
-}
-
-.closeSort {
-    margin-left: 18px;
-    display: flex;
-    align-items: center;
-}
-
-.closeSort2 {
-    margin-left: 10px;
-    display: flex;
-    flex-direction: column;
 }
 
 .markFilter {
@@ -89,10 +73,6 @@ h1 {
     font-size: 0;
     padding: 0;
     cursor: pointer;
-}
-
-input {
-    outline: none;
 }
 
 .inputSearch {
@@ -185,56 +165,35 @@ input {
 @media (max-width: 768px) {
     .container {
         width: 400px;
-        height: 531px;
     }
 
-    h1 {
-        font-weight: bold;
+    .title {
         padding-left: 0;
     }
 
     .magnifyingIndent {
         padding-left: 0;
-        padding-right: 16px;
-        padding-top: 6px;
-        margin: 0;
     }
 
     .table {
-        display: flex;
         justify-content: left;
-        align-items: center;
-        height: 58px;
         max-width: 450px;
     }
 
     .searchAndSort {
-        display: flex;
-        justify-content: space-between;
         max-width: 400px;
     }
 
     .inputSearch {
-        border: 0;
         width: 100px;
-        height: 18px;
-        padding: 0;
-    }
-
-    .sortText {
     }
 
     .columnCheckbox {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 40px;
     }
 
     .columnDescription {
-        display: flex;
         justify-content: flex-start;
-        align-items: center;
         width: 320px;
     }
 
@@ -247,9 +206,7 @@ input {
     }
 
     .columnDelete {
-        display: flex;
         justify-content: left;
-        align-items: center;
         width: 40px;
     }
 

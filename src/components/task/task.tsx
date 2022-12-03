@@ -5,6 +5,7 @@ import {useActions} from "../../hooks/action";
 import {Trash} from "../../images/trash";
 import {ChangeTask} from "./changeTask";
 import {Arrow} from "../../images/arrow";
+import classNames from "classnames";
 
 interface IProps {
     status: boolean
@@ -18,6 +19,14 @@ export const Task: FC<IProps> = ({status, description, date, id}) => {
     const {deleteTask} = useActions()
     const [isActive, setActive] = useState(false)
 
+    const textColor = classNames(style.textWork, {
+        [style.textDone]: status,
+    })
+
+    const taskVision = classNames(style.visionArrow, {
+        [style.coup]: isActive,
+    })
+
     return (
         <>
             <tr className={style.table} key={id}>
@@ -26,10 +35,10 @@ export const Task: FC<IProps> = ({status, description, date, id}) => {
                 </th>
                 <th onClick={() => setActive(!isActive)} className={style.columnDescription}>
                         <p className={style.paddingForText}>{description}</p>
-                        <Arrow coup={isActive ? style.coup : style.visionArrow}/>
+                        <Arrow coup={taskVision}/>
                 </th>
                 <th className={style.columnStatus}>
-                    <p className={status ? style.textDone : style.textWork}>{status ? 'Выполнено' : 'В работе'}</p>
+                    <p className={textColor}>{status ? 'Выполнено' : 'В работе'}</p>
                 </th>
                 <th className={style.columnDate}><p
                     className={style.paddingForDate}>{new Date(date).toLocaleDateString()}</p></th>

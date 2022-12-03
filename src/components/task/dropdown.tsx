@@ -36,10 +36,10 @@ export const DropDown: FC<IProps> = ({sort, setSort, sortOrderStatus, setSortOrd
 
     const onHandleChange = (newValue: any) => {
         setSelectedOption(newValue.value)
-        if (newValue.value === 'status')
-            sortStatus('status', !sortOrderStatus)
-        if (newValue.value === 'date')
-            sortDate('date', !sortOrderDate)
+        switch (newValue.value) {
+            case 'status': return sortStatus('status', !sortOrderStatus)
+            case 'date': return sortDate('date', !sortOrderDate)
+        }
     }
 
     return (

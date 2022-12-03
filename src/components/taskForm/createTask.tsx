@@ -3,6 +3,7 @@ import {useActions} from "../../hooks/action";
 import {ErrorMessage, Field, Form, Formik, FormikHelpers, useFormikContext} from "formik";
 import style from './createTask.module.css'
 import {MinusIcon} from "../../images/minusIcon";
+import classNames from "classnames";
 
 interface IFormValues {
     task: string
@@ -36,9 +37,29 @@ export const CreateTask: FC<IProps> = ({isModal, setModal}) => {
         resetForm()
     }
 
+    const openModal = classNames(style.modal, {
+        [style.modalActive]: isModal
+    })
+
+    const modalContent = classNames(style.modalContent, {
+        [style.modalContentActive]: isModal
+    })
+
+    const inputErrors = (errors: IErrors) => {
+        return classNames(style.input, {
+            [style.inputErrors]: errors.task
+        })
+    }
+
+    const buttonDisabled = (values: IErrors) => {
+        return classNames(style.buttonAdd, {
+            [style.buttonAddFilled]: values.task
+        })
+    }
+
     return (
-        <div className={isModal ? style.modalActive : style.modal} onClick={hideModal}>
-            <div className={isModal ? style.modalContentActive : style.modalContent} onClick={e => e.stopPropagation()}>
+        <div className={openModal} onClick={hideModal}>
+            <div className={modalContent} onClick={e => e.stopPropagation()}>
                 <div className={style.containerModal}>
                     <h3 className={style.leftPaddingHeader}>Создать новую задачу</h3>
                     <button className={style.invisibleButton} onClick={hideModal}>
@@ -59,12 +80,10 @@ export const CreateTask: FC<IProps> = ({isModal, setModal}) => {
                 <Form>
                     <p className={style.textDescription}>Описание</p>
                     <div className={style.form}>
-                        <Field className={errors.task ? style.inputErrors : style.input}
-                               type='text' id='task' name='task' placeholder='Введите описание'/>
+                        <Field className={inputErrors(errors)} type='text' id='task' name='task' placeholder='Введите описание'/>
                         <AutoValues />
                         <ErrorMessage component='div' className={style.error} name='task' />
-                        <button className={values.task ? style.buttonAddFilled : style.buttonAdd} type='submit'>
-                            <p className={values.task ? style.textCreateFilled : style.textCreate}>Создать</p></button>
+                        <button className={buttonDisabled(values)} type='submit'>Создать</button>
                     </div>
                 </Form>
             )}
