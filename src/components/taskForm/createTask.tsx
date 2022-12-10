@@ -1,19 +1,24 @@
 import React, {FC} from "react";
-import {useActions} from "../../hooks/action";
 import {ErrorMessage, Field, Form, Formik, FormikHelpers, useFormikContext} from "formik";
 import style from './createTask.module.css'
 import {MinusIcon} from "../../images/minusIcon";
 import classNames from "classnames";
 
 interface IFormValues {
-    task: string
+    name: string
+    description: string
 }
 
 interface IErrors {
-    task?: string
+    name?: string
 }
 
 interface IProps {
+    title: string
+    submit: ({}) => ({})
+    name?: string
+    description?: string
+    id?: number
     isModal: boolean
     setModal: (boolean: boolean) => void
 }
@@ -23,16 +28,15 @@ const AutoValues = () => {
     return null
 }
 
-export const CreateTask: FC<IProps> = ({isModal, setModal}) => {
+export const CreateTask: FC<IProps> = ({isModal, setModal, submit, title, id, name, description}) => {
 
-    const {addTask} = useActions()
 
     const hideModal = () => {
         setModal(false)
     }
 
     const onSubmitForm = (values: IFormValues, {resetForm}: FormikHelpers<IFormValues>) => {
-        addTask({description: values.task})
+        submit({name: values.name, description: values.description, id: id})
         setModal(false)
         resetForm()
     }
@@ -46,41 +50,47 @@ export const CreateTask: FC<IProps> = ({isModal, setModal}) => {
     })
 
     const inputErrors = (errors: IErrors) => {
-        return classNames(style.input, {
-            [style.inputErrors]: errors.task
+        return classNames(style.inputName, {
+            [style.inputErrors]: errors.name
         })
     }
 
     const buttonDisabled = (values: IErrors) => {
         return classNames(style.buttonAdd, {
-            [style.buttonAddFilled]: values.task
+            [style.buttonAddFilled]: values.name
         })
     }
+
 
     return (
         <div className={openModal} onClick={hideModal}>
             <div className={modalContent} onClick={e => e.stopPropagation()}>
                 <div className={style.containerModal}>
-                    <h3 className={style.leftPaddingHeader}>Создать новую задачу</h3>
+                    <h3 className={style.leftPaddingHeader}>{title}</h3>
                     <button className={style.invisibleButton} onClick={hideModal}>
                         <MinusIcon/>
                     </button>
                 </div>
         <Formik
-            initialValues={{ task: '' }}
+            initialValues={{
+                name: name ?? '',
+                description: description ?? ''
+            }}
             validate={values => {
                 const errors: IErrors = {}
-                if (values.task.length < 1) {
-                    errors.task = 'Введите описание';
+                if (values.name.length < 1) {
+                    errors.name = 'Введите название';
                 }
                 return errors
             }}
             onSubmit={onSubmitForm}>
             {({errors, touched, values}) => (
                 <Form>
-                    <p className={style.textDescription}>Описание</p>
+                    <p className={style.textName}>Название</p>
                     <div className={style.form}>
-                        <Field className={inputErrors(errors)} type='text' id='task' name='task' placeholder='Введите описание'/>
+                        <Field className={inputErrors(errors)} id='name' name='name' placeholder='Введите название'/>
+                        <div className={style.textDescription}>Описание</div>
+                        <Field className={style.inputDescription} component="textarea" id='description' name='description' placeholder='Введите описание'/>
                         <AutoValues />
                         <ErrorMessage component='div' className={style.error} name='task' />
                         <button className={buttonDisabled(values)} type='submit'>Создать</button>

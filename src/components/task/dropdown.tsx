@@ -39,6 +39,7 @@ export const DropDown: FC<IProps> = ({sort, setSort, sortOrderStatus, setSortOrd
         switch (newValue.value) {
             case 'status': return sortStatus('status', !sortOrderStatus)
             case 'date': return sortDate('date', !sortOrderDate)
+            default: return setSort('')
         }
     }
 

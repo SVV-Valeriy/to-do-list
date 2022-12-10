@@ -21,7 +21,7 @@
 
 .modalContent {
     width: 350px;
-    height: 245px;
+    height: 395px;
     padding: 20px;
     border-radius: 12px;
     background-color: white;
@@ -44,7 +44,7 @@
     padding-left: 18px;
 }
 
-.textDescription {
+.textName {
     padding-left: 18px;
     font-weight: 400
 }
@@ -52,19 +52,35 @@
 .form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
-.input {
+.inputName {
     border: 1px #DDE2E4 solid;
     border-radius: 10px;
     width: 311px;
     height: 40px;
 }
 
+.inputDescription {
+    border: 1px #DDE2E4 solid;
+    border-radius: 10px;
+    width: 311px;
+    height: 100px;
+    resize: none
+}
+
 .inputErrors {
     border: 1px red solid;
+}
+
+.textDescription {
+    padding-left: 18px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-weight: 400;
+    align-self: flex-start;
 }
 
 .error {

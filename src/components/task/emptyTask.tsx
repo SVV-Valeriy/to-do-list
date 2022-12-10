@@ -8,7 +8,7 @@ export const EmptyTask = () => {
             <tr className={style.table}>
                 <th className={style.columnCheckbox}>
                 </th>
-                <th className={style.columnDescription}>
+                <th className={style.columnName}>
                     <p className={style.paddingForText}>Добавьте новую задачу</p>
                 </th>
             </tr>

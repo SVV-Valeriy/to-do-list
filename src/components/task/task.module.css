@@ -14,10 +14,11 @@
     width: 80px;
 }
 
-.columnDescription {
+.columnName {
     display: flex;
+    flex-direction: column;
     justify-content: left;
-    align-items: center;
+    align-items: flex-start;
     width: 937px;
 }
 
@@ -37,6 +38,7 @@
 }
 
 .paddingForText {
+    margin: 0;
     padding-left: 20px;
     font-size: 16px;
 }
@@ -101,7 +103,7 @@
         margin-top: 5px;
     }
 
-    .columnDescription {
+    .columnName {
         flex-direction: row;
         justify-content: space-between;
         text-align: left;

@@ -1,3 +1,8 @@
+label {
+    max-height: 22px;
+    max-width: 22px;
+}
+
 input[type="checkbox"] {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
@@ -6,6 +11,7 @@ input[type="checkbox"] {
     position: absolute;
     white-space: nowrap;
     width: 1px;
+
 }
 .checkbox {
     display: inline-block;

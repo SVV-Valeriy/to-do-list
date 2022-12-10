@@ -9,13 +9,13 @@ interface IProps {
 
 export const InputTask: FC<IProps> = ({status, id}) => {
 
-    const {changeTask} = useActions()
+    const {changeStatus} = useActions()
 
     return (
         <label>
             <input
                 type="checkbox"
-                onChange={() => changeTask({id, status})}
+                onChange={() => changeStatus({id, status})}
             />
             <svg
                 className={status ? style.checkboxActive : style.checkbox}

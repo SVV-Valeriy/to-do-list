@@ -8,10 +8,12 @@ import {Magnifier} from "../../images/magnifier";
 import classNames from 'classnames';
 import {EmptyTask} from "../task/emptyTask";
 import {DropDown} from "../task/dropdown";
+import {useActions} from "../../hooks/action";
 
 export const HomePage = () => {
 
     const {tasks} = useAppSelector(state => state.task)
+    const {addTask} = useActions()
     const [isModal, setModal] = useState(false)
     const [value, setValue] = useState('')
     const [sort, setSort] = useState('')
@@ -48,12 +50,14 @@ export const HomePage = () => {
         }
     }
 
-    const filteredTasks = forTask(sort).filter(({description, date}) => {
-        return description.toLowerCase().includes(value.toLowerCase()) || String(date).toLowerCase().includes(value.toLowerCase())
+    const filteredTasks = forTask(sort).filter(({name, date}) => {
+        return name.toLowerCase().includes(value.toLowerCase()) || String(date).toLowerCase().includes(value.toLowerCase())
     })
 
-    const tasksElement = filteredTasks.map(({description, status, date, id}) => (
-        <Task key={id} status={status} description={description} date={date} id={id}/>))
+    const tasksElement = filteredTasks.map(({name, description, status, date, id}) => (
+        <Task key={id} status={status} name={name} description={description} date={date} id={id}/>))
+
+    const title = 'Создать новую задачу'
 
     return (
         <div className={style.container}>
@@ -75,7 +79,7 @@ export const HomePage = () => {
                     </form>
                 </div>
                 <div className={style.sort}>
-                    <div className={style.sortDescription}>
+                    <div className={style.sortName}>
                         <p>Сортировать: </p>
                         <DropDown sort={sort} setSort={setSort}
                                   sortOrderStatus={sortOrderStatus} setSortOrderStatus={setSortOrderStatus}
@@ -89,7 +93,7 @@ export const HomePage = () => {
                 <thead>
                 <tr className={style.table}>
                     <th className={style.columnCheckbox}/>
-                    <th className={style.columnDescription}>
+                    <th className={style.columnName}>
                         <p className={style.borderLeft}>Описание</p>
                     </th>
                     <th className={style.columnStatus}>
@@ -108,7 +112,7 @@ export const HomePage = () => {
                 }
                 </tbody>
             </table>
-            {isModal && <CreateTask isModal={isModal} setModal={setModal}/>}
+            {isModal && <CreateTask title={title} submit={addTask} isModal={isModal} setModal={setModal}/>}
         </div>
     )
 }
