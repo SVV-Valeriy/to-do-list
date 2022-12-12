@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {useAppSelector} from "../../hooks/redux";
 import {Task} from "../task/task";
-import {CreateTask} from "../taskForm/createTask";
+import {Modal} from "../modal/modal";
 import style from './homePage.module.css'
 import {PlusIcon} from '../../images/plusIcon'
 import {Magnifier} from "../../images/magnifier";
@@ -9,12 +9,13 @@ import classNames from 'classnames';
 import {EmptyTask} from "../task/emptyTask";
 import {DropDown} from "../task/dropdown";
 import {useActions} from "../../hooks/action";
+import {FormForModal} from "../form/formForModal";
 
 export const HomePage = () => {
 
     const {tasks} = useAppSelector(state => state.task)
     const {addTask} = useActions()
-    const [isModal, setModal] = useState(false)
+    const [isOpenModal, setModal] = useState(false)
     const [value, setValue] = useState('')
     const [sort, setSort] = useState('')
     const [sortOrderStatus, setSortOrderStatus] = useState(true)
@@ -112,7 +113,9 @@ export const HomePage = () => {
                 }
                 </tbody>
             </table>
-            {isModal && <CreateTask title={title} submit={addTask} isModal={isModal} setModal={setModal}/>}
+            {isOpenModal && <Modal isOpenModal={isOpenModal} setModal={setModal}>
+                <FormForModal isOpenModal={isOpenModal} setModal={setModal} title={title} submit={addTask}/>
+            </Modal>}
         </div>
     )
 }

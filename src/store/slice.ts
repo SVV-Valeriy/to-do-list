@@ -119,7 +119,6 @@ export const taskSlice = createSlice({
                     task.name = action.payload.name
                     task.description = action.payload.description
                 }
-
                 return task
             })
             localStorage.setItem(LS_TASK_KEY, JSON.stringify(state.tasks))

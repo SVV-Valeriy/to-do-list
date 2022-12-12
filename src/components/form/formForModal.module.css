@@ -1,44 +1,9 @@
-.modal {
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.5s;
-}
-
-.modalActive {
-    transition: 0.5s;
-    opacity: 1;
-    pointer-events: all;
-}
-
-.modalContent {
-    width: 350px;
-    height: 395px;
-    padding: 20px;
-    border-radius: 12px;
-    background-color: white;
-    transform: scale(0.5);
-    transition: 0.4s all;
-}
-
-.modalContentActive {
-    transition: 0.4s all;
-    transform: scale(1);
-}
-
 .containerModal {
     display: flex;
     justify-content: space-between;
     width: 333px;
 }
+
 .leftPaddingHeader {
     font-weight: 700;
     padding-left: 18px;
@@ -113,11 +78,4 @@
     font-size: 0;
     padding: 0;
     cursor: pointer;
-}
-
-
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-    select:focus, textarea:focus, input:focus {
-        font-size: 16px;
-    }
 }

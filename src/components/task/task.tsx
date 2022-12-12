@@ -6,9 +6,8 @@ import {Trash} from "../../images/trash";
 import {ChangeTask} from "./changeTask";
 import {Arrow} from "../../images/arrow";
 import classNames from "classnames";
-import {CreateTask} from "../taskForm/createTask";
-import {MinusIcon} from "../../images/minusIcon";
-import {PlusIcon} from "../../images/plusIcon";
+import {Modal} from "../modal/modal";
+import {FormForModal} from "../form/formForModal";
 
 interface IProps {
     status: boolean
@@ -23,7 +22,7 @@ export const Task: FC<IProps> = ({status, name, description, date, id}) => {
     const {deleteTask} = useActions()
     const {changeTask} = useActions()
     const [isActive, setActive] = useState(false)
-    const [isModal, setModal] = useState(false)
+    const [isOpenModal, setModal] = useState(false)
 
     const showModal = () => {
         setModal(true)
@@ -66,7 +65,9 @@ export const Task: FC<IProps> = ({status, name, description, date, id}) => {
             </tr>
             {isActive &&
             <ChangeTask status={status} date={date}/>}
-            {isModal && <CreateTask name={name} description={description} id={id} title={title} submit={changeTask} isModal={isModal} setModal={setModal}/>}
+            {isOpenModal && <Modal isOpenModal={isOpenModal} setModal={setModal}>
+                <FormForModal name={name} description={description} id={id} title={title} submit={changeTask} isOpenModal={isOpenModal} setModal={setModal}/>
+            </Modal>}
         </>
     )
 }
