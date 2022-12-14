@@ -1,6 +1,7 @@
 import React, {FC} from "react";
 import {useActions} from "../../hooks/action";
 import style from './inputTask.module.css'
+import classNames from "classnames";
 
 interface IProps {
     status: boolean
@@ -11,14 +12,22 @@ export const InputTask: FC<IProps> = ({status, id}) => {
 
     const {changeStatus} = useActions()
 
+    const changeCheckbox = () => {
+        changeStatus({id, status})
+    }
+
+    const checkboxActive = classNames(style.checkbox, {
+        [style.checkboxActive]: status,
+    })
+
     return (
         <label>
             <input
                 type="checkbox"
-                onChange={() => changeStatus({id, status})}
+                onChange={changeCheckbox}
             />
             <svg
-                className={status ? style.checkboxActive : style.checkbox}
+                className={checkboxActive}
                 aria-hidden="true"
                 viewBox="0 0 10 11"
                 fill="none"

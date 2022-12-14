@@ -1,12 +1,7 @@
-.containerModal {
-    display: flex;
-    justify-content: space-between;
-    width: 333px;
-}
-
 .leftPaddingHeader {
     font-weight: 700;
     padding-left: 18px;
+    margin-top: 0;
 }
 
 .textName {

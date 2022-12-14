@@ -1,16 +1,21 @@
 import React, {FC, PropsWithChildren} from "react";
 import style from './modal.module.css'
 import classNames from "classnames";
+import {MinusIcon} from "../../images/minusIcon";
 
 interface IProps {
     isOpenModal: boolean
-    setModal: (boolean: boolean) => void
+    onClose: () => void
 }
 
-export const Modal: FC<PropsWithChildren<IProps>> = ({isOpenModal, setModal, children}) => {
+export const Modal: FC<PropsWithChildren<IProps>> = ({isOpenModal, onClose, children}) => {
 
-    const hideModal = () => {
-        setModal(false)
+    const onCloseHandler = () => {
+        onClose()
+    }
+
+    const stopEvents = (e: React.MouseEvent) => {
+        e.stopPropagation()
     }
 
     const openModal = classNames(style.modal, {
@@ -22,8 +27,13 @@ export const Modal: FC<PropsWithChildren<IProps>> = ({isOpenModal, setModal, chi
     })
 
     return (
-        <div className={openModal} onClick={hideModal}>
-            <div className={modalContent} onClick={e => e.stopPropagation()}>
+        <div className={openModal} onClick={onCloseHandler}>
+            <div className={modalContent} onClick={stopEvents}>
+                <div className={style.containerModal}>
+                    <button className={style.invisibleButton} onClick={onCloseHandler}>
+                        <MinusIcon/>
+                    </button>
+                </div>
                 {children}
             </div>
         </div>

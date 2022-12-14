@@ -1,13 +1,14 @@
 import React, {FC} from "react";
-import style from './changeTask.module.css'
+import style from './mobileTask.module.css'
 import classNames from "classnames";
 
 interface IProps {
+    description: string
     status: boolean
     date: Date
 }
 
-export const ChangeTask: FC<IProps> = ({status, date}) => {
+export const MobileTask: FC<IProps> = ({status, date, description}) => {
 
     const dateConversion = new Date(date).toLocaleDateString()
 
@@ -17,6 +18,7 @@ export const ChangeTask: FC<IProps> = ({status, date}) => {
 
     return (
         <tr className={style.vision}>
+            <td className={style.textDescription}>{description}</td>
             <td className={textColor}>{status ? 'Выполнено' : 'В работе'}</td>
             <td className={style.textDate}>Дата: {dateConversion}</td>
         </tr>

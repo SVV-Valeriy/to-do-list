@@ -9,20 +9,24 @@ import classNames from 'classnames';
 import {EmptyTask} from "../task/emptyTask";
 import {DropDown} from "../task/dropdown";
 import {useActions} from "../../hooks/action";
-import {FormForModal} from "../form/formForModal";
+import {FormForTask} from "../form/formForTask";
 
 export const HomePage = () => {
 
     const {tasks} = useAppSelector(state => state.task)
     const {addTask} = useActions()
-    const [isOpenModal, setModal] = useState(false)
+    const [isOpenModal, setOpenModal] = useState(false)
     const [value, setValue] = useState('')
     const [sort, setSort] = useState('')
     const [sortOrderStatus, setSortOrderStatus] = useState(true)
     const [sortOrderDate, setSortOrderDate] = useState(true)
 
     const showModal = () => {
-        setModal(true)
+        setOpenModal(true)
+    }
+
+    const onClose = () => {
+        setOpenModal(false)
     }
 
     const sortForStatus = [...tasks].sort((a, b) => {
@@ -95,7 +99,7 @@ export const HomePage = () => {
                 <tr className={style.table}>
                     <th className={style.columnCheckbox}/>
                     <th className={style.columnName}>
-                        <p className={style.borderLeft}>Описание</p>
+                        <p className={style.borderLeft}>Задачи</p>
                     </th>
                     <th className={style.columnStatus}>
                         <p className={style.borderLeft}>Статус</p>
@@ -113,8 +117,8 @@ export const HomePage = () => {
                 }
                 </tbody>
             </table>
-            {isOpenModal && <Modal isOpenModal={isOpenModal} setModal={setModal}>
-                <FormForModal isOpenModal={isOpenModal} setModal={setModal} title={title} submit={addTask}/>
+            {isOpenModal && <Modal isOpenModal={isOpenModal} onClose={onClose}>
+                <FormForTask isOpenModal={isOpenModal} setOpenModal={setOpenModal} title={title} submit={addTask}/>
             </Modal>}
         </div>
     )

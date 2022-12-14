@@ -3,11 +3,12 @@ import style from './task.module.css'
 import {InputTask} from "./inputTask";
 import {useActions} from "../../hooks/action";
 import {Trash} from "../../images/trash";
-import {ChangeTask} from "./changeTask";
+import {MobileTask} from "./mobileTask";
 import {Arrow} from "../../images/arrow";
 import classNames from "classnames";
 import {Modal} from "../modal/modal";
-import {FormForModal} from "../form/formForModal";
+import {FormForTask} from "../form/formForTask";
+import {Pen} from "../../images/pen";
 
 interface IProps {
     status: boolean
@@ -21,11 +22,24 @@ export const Task: FC<IProps> = ({status, name, description, date, id}) => {
 
     const {deleteTask} = useActions()
     const {changeTask} = useActions()
-    const [isActive, setActive] = useState(false)
-    const [isOpenModal, setModal] = useState(false)
+    const [isActiveDescription, setActiveDescription] = useState(false)
+    const [isOpenModal, setOpenModal] = useState(false)
 
-    const showModal = () => {
-        setModal(true)
+    const openDescription = () => {
+        setActiveDescription(!isActiveDescription)
+    }
+
+    const showModal = (e: React.MouseEvent) => {
+        e.stopPropagation()
+        setOpenModal(true)
+    }
+
+    const onClose = () => {
+        setOpenModal(false)
+    }
+
+    const deleteObjective = () => {
+        deleteTask({id})
     }
 
     const textColor = classNames(style.textWork, {
@@ -33,8 +47,10 @@ export const Task: FC<IProps> = ({status, name, description, date, id}) => {
     })
 
     const taskVision = classNames(style.visionArrow, {
-        [style.coup]: isActive,
+        [style.coup]: isActiveDescription,
     })
+
+    const localDate = new Date(date).toLocaleDateString()
 
     const title = 'Редактировать задачу'
 
@@ -44,30 +60,37 @@ export const Task: FC<IProps> = ({status, name, description, date, id}) => {
                 <th className={style.columnCheckbox}>
                     <InputTask id={id} status={status}/>
                 </th>
-                <th onClick={() => setActive(!isActive)} className={style.columnName}>
-                        <p className={style.paddingForText}>{name}</p>
-                        <p className={style.paddingForText}>{description}</p>
-                    <button onClick={showModal}>
-                        Ред...
+                <th onClick={openDescription} className={style.columnName}>
+                    <div>
+                    <p className={style.paddingForName}>{name}</p>
+                    {isActiveDescription &&
+                    <p className={style.paddingForDescription}>{description}</p>}
+                    </div>
+                    <div className={style.setting}>
+                    <Arrow coup={taskVision}/>
+                    <button className={style.invisibleButton} onClick={showModal}>
+                        <Pen/>
                     </button>
-                        <Arrow coup={taskVision}/>
+                    </div>
                 </th>
                 <th className={style.columnStatus}>
                     <p className={textColor}>{status ? 'Выполнено' : 'В работе'}</p>
                 </th>
                 <th className={style.columnDate}><p
-                    className={style.paddingForDate}>{new Date(date).toLocaleDateString()}</p></th>
+                    className={style.paddingForDate}>{localDate}</p></th>
                 <th className={style.columnDelete}>
-                    <button className={style.invisibleButton} onClick={() => deleteTask({id})}>
+                    <button className={style.invisibleButton} onClick={deleteObjective}>
                         <Trash/>
                     </button>
                 </th>
             </tr>
-            {isActive &&
-            <ChangeTask status={status} date={date}/>}
-            {isOpenModal && <Modal isOpenModal={isOpenModal} setModal={setModal}>
-                <FormForModal name={name} description={description} id={id} title={title} submit={changeTask} isOpenModal={isOpenModal} setModal={setModal}/>
+            {isActiveDescription &&
+            <MobileTask description={description} status={status} date={date}/>}
+            {isOpenModal && <Modal onClose={onClose} isOpenModal={isOpenModal}>
+                <FormForTask name={name} description={description} id={id} title={title} submit={changeTask}
+                             isOpenModal={isOpenModal} setOpenModal={setOpenModal}/>
             </Modal>}
         </>
+
     )
 }
