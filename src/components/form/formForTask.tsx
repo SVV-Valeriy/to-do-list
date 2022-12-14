@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import {ErrorMessage, Field, Form, Formik, FormikHelpers, useFormikContext} from "formik";
 import style from './formForTask.module.css'
-import {MinusIcon} from "../../images/minusIcon";
+import {Cross} from "../../images/cross";
 import classNames from "classnames";
 
 interface IFormValues {
@@ -19,7 +19,7 @@ interface IProps {
     name?: string
     description?: string
     id?: number
-    isOpenModal: boolean
+    isOpen: boolean
     setOpenModal: (boolean: boolean) => void
 }
 
@@ -28,8 +28,7 @@ const AutoValues = () => {
     return null
 }
 
-export const FormForTask: FC<IProps> = ({isOpenModal, setOpenModal, submit, title, id, name, description}) => {
-
+export const FormForTask: FC<IProps> = ({isOpen, setOpenModal, submit, title, id, name, description}) => {
     const onSubmitForm = (values: IFormValues, {resetForm}: FormikHelpers<IFormValues>) => {
         submit({name: values.name, description: values.description, id: id})
         setOpenModal(false)

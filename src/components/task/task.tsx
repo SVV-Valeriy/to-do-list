@@ -1,9 +1,9 @@
 import React, {FC, useState} from "react";
 import style from './task.module.css'
-import {InputTask} from "./inputTask";
+import {CheckboxTask} from "./checkboxTask/checkboxTask";
 import {useActions} from "../../hooks/action";
 import {Trash} from "../../images/trash";
-import {MobileTask} from "./mobileTask";
+import {MobileTask} from "./mobile/mobileTask";
 import {Arrow} from "../../images/arrow";
 import classNames from "classnames";
 import {Modal} from "../modal/modal";
@@ -58,7 +58,7 @@ export const Task: FC<IProps> = ({status, name, description, date, id}) => {
         <>
             <tr className={style.table} key={id}>
                 <th className={style.columnCheckbox}>
-                    <InputTask id={id} status={status}/>
+                    <CheckboxTask id={id} status={status}/>
                 </th>
                 <th onClick={openDescription} className={style.columnName}>
                     <div>
@@ -88,7 +88,7 @@ export const Task: FC<IProps> = ({status, name, description, date, id}) => {
             <MobileTask description={description} status={status} date={date}/>}
             {isOpenModal && <Modal onClose={onClose} isOpenModal={isOpenModal}>
                 <FormForTask name={name} description={description} id={id} title={title} submit={changeTask}
-                             isOpenModal={isOpenModal} setOpenModal={setOpenModal}/>
+                             isOpen={isOpenModal} setOpenModal={setOpenModal}/>
             </Modal>}
         </>
 

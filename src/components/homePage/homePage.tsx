@@ -6,8 +6,8 @@ import style from './homePage.module.css'
 import {PlusIcon} from '../../images/plusIcon'
 import {Magnifier} from "../../images/magnifier";
 import classNames from 'classnames';
-import {EmptyTask} from "../task/emptyTask";
-import {DropDown} from "../task/dropdown";
+import {EmptyTask} from "../task/emptyTask/emptyTask";
+import {DropDown} from "../dropDown/dropdown";
 import {useActions} from "../../hooks/action";
 import {FormForTask} from "../form/formForTask";
 
@@ -118,7 +118,7 @@ export const HomePage = () => {
                 </tbody>
             </table>
             {isOpenModal && <Modal isOpenModal={isOpenModal} onClose={onClose}>
-                <FormForTask isOpenModal={isOpenModal} setOpenModal={setOpenModal} title={title} submit={addTask}/>
+                <FormForTask isOpen={isOpenModal} setOpenModal={setOpenModal} title={title} submit={addTask}/>
             </Modal>}
         </div>
     )

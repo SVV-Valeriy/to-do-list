@@ -14,75 +14,7 @@ export interface ITaskList {
     tasks: Array<ITask>
 }
 
-const initialState: ITaskList = {
-    // tasks: JSON.parse(<string>localStorage.getItem('localTasks')) ?? []}
-    tasks:
-        [
-            {
-                id: 1,
-                name: 'Размещение новостей на сайте',
-                description: 'Пробный режим',
-                status: true,
-                date: new Date('2022.04.22')
-            },
-            {
-                id: 2,
-                name: 'Внедрить Wi-FI для читателей',
-                description: 'Пробный режим',
-                status: false,
-                date: new Date('2022.03.25')
-            },
-            {
-                id: 3,
-                name: 'Отредактировать раздел "Доступная среда"',
-                description: 'Пробный режим',
-                status: true,
-                date: new Date('2022.03.15')
-            },
-            {
-                id: 4,
-                name: 'Презентация "Информационные технологии"',
-                description: 'Пробный режим',
-                status: false,
-                date: new Date('2022.03.15')
-            },
-            {
-                id: 5,
-                name: 'Счётчики - внедрить дизайн',
-                description: 'Пробный режим',
-                status: false,
-                date: new Date('2022.03.09')
-            },
-            {
-                id: 6,
-                name: 'Сверстать новый layout',
-                description: 'Пробный режим',
-                status: false,
-                date: new Date('2022.03.07')
-            },
-            {
-                id: 7,
-                name: 'Скролл в новостях',
-                description: 'Пробный режим',
-                status: true,
-                date: new Date('2022.03.01')
-            },
-            {
-                id: 8,
-                name: 'Форма сброса пароля',
-                description: 'Пробный режим',
-                status: false,
-                date: new Date('2022.02.25')
-            },
-            {
-                id: 9,
-                name: 'Внедрение модуля Chat',
-                description: 'Пробный режим',
-                status: false,
-                date: new Date('2022.02.20')
-            }
-        ]
-}
+const initialState: ITaskList = {tasks: JSON.parse(<string>localStorage.getItem('localTasks')) ?? []}
 
 export const taskSlice = createSlice({
     name: 'toDoList',

@@ -1,7 +1,7 @@
 import React, {FC, PropsWithChildren} from "react";
 import style from './modal.module.css'
 import classNames from "classnames";
-import {MinusIcon} from "../../images/minusIcon";
+import {Cross} from "../../images/cross";
 
 interface IProps {
     isOpenModal: boolean
@@ -9,7 +9,6 @@ interface IProps {
 }
 
 export const Modal: FC<PropsWithChildren<IProps>> = ({isOpenModal, onClose, children}) => {
-
     const onCloseHandler = () => {
         onClose()
     }
@@ -18,20 +17,20 @@ export const Modal: FC<PropsWithChildren<IProps>> = ({isOpenModal, onClose, chil
         e.stopPropagation()
     }
 
-    const openModal = classNames(style.modal, {
+    const openModalClass = classNames(style.modal, {
         [style.modalActive]: isOpenModal
     })
 
-    const modalContent = classNames(style.modalContent, {
+    const modalContentClass = classNames(style.modalContent, {
         [style.modalContentActive]: isOpenModal
     })
 
     return (
-        <div className={openModal} onClick={onCloseHandler}>
-            <div className={modalContent} onClick={stopEvents}>
+        <div className={openModalClass} onClick={onCloseHandler}>
+            <div className={modalContentClass} onClick={stopEvents}>
                 <div className={style.containerModal}>
                     <button className={style.invisibleButton} onClick={onCloseHandler}>
-                        <MinusIcon/>
+                        <Cross/>
                     </button>
                 </div>
                 {children}
