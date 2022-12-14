@@ -1,25 +1,32 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {useAppSelector} from "../../hooks/redux";
 import {Task} from "../task/task";
-import {CreateTask} from "../taskForm/createTask";
+import {Modal} from "../modal/modal";
 import style from './homePage.module.css'
 import {PlusIcon} from '../../images/plusIcon'
 import {Magnifier} from "../../images/magnifier";
 import classNames from 'classnames';
-import {EmptyTask} from "../task/emptyTask";
-import {DropDown} from "../task/dropdown";
+import {EmptyTask} from "../task/emptyTask/emptyTask";
+import {DropDown} from "../dropDown/dropdown";
+import {useActions} from "../../hooks/action";
+import {FormForTask} from "../form/formForTask";
 
 export const HomePage = () => {
 
     const {tasks} = useAppSelector(state => state.task)
-    const [isModal, setModal] = useState(false)
+    const {addTask} = useActions()
+    const [isOpenModal, setOpenModal] = useState(false)
     const [value, setValue] = useState('')
     const [sort, setSort] = useState('')
     const [sortOrderStatus, setSortOrderStatus] = useState(true)
     const [sortOrderDate, setSortOrderDate] = useState(true)
 
     const showModal = () => {
-        setModal(true)
+        setOpenModal(true)
+    }
+
+    const onClose = () => {
+        setOpenModal(false)
     }
 
     const sortForStatus = [...tasks].sort((a, b) => {
@@ -48,12 +55,14 @@ export const HomePage = () => {
         }
     }
 
-    const filteredTasks = forTask(sort).filter(({description, date}) => {
-        return description.toLowerCase().includes(value.toLowerCase()) || String(date).toLowerCase().includes(value.toLowerCase())
+    const filteredTasks = forTask(sort).filter(({name, date}) => {
+        return name.toLowerCase().includes(value.toLowerCase()) || String(date).toLowerCase().includes(value.toLowerCase())
     })
 
-    const tasksElement = filteredTasks.map(({description, status, date, id}) => (
-        <Task key={id} status={status} description={description} date={date} id={id}/>))
+    const tasksElement = filteredTasks.map(({name, description, status, date, id}) => (
+        <Task key={id} status={status} name={name} description={description} date={date} id={id}/>))
+
+    const title = 'Создать новую задачу'
 
     return (
         <div className={style.container}>
@@ -75,7 +84,7 @@ export const HomePage = () => {
                     </form>
                 </div>
                 <div className={style.sort}>
-                    <div className={style.sortDescription}>
+                    <div className={style.sortName}>
                         <p>Сортировать: </p>
                         <DropDown sort={sort} setSort={setSort}
                                   sortOrderStatus={sortOrderStatus} setSortOrderStatus={setSortOrderStatus}
@@ -89,8 +98,8 @@ export const HomePage = () => {
                 <thead>
                 <tr className={style.table}>
                     <th className={style.columnCheckbox}/>
-                    <th className={style.columnDescription}>
-                        <p className={style.borderLeft}>Описание</p>
+                    <th className={style.columnName}>
+                        <p className={style.borderLeft}>Задачи</p>
                     </th>
                     <th className={style.columnStatus}>
                         <p className={style.borderLeft}>Статус</p>
@@ -108,7 +117,9 @@ export const HomePage = () => {
                 }
                 </tbody>
             </table>
-            {isModal && <CreateTask isModal={isModal} setModal={setModal}/>}
+            {isOpenModal && <Modal isOpenModal={isOpenModal} onClose={onClose}>
+                <FormForTask isOpen={isOpenModal} setOpenModal={setOpenModal} title={title} submit={addTask}/>
+            </Modal>}
         </div>
     )
 }

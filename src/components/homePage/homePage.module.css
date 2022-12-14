@@ -31,7 +31,6 @@
     justify-content: center;
     flex-direction: column;
     font-weight: bold;
-    cursor: pointer;
 }
 
 .openSort {
@@ -42,7 +41,7 @@
     margin-top: 4px;
 }
 
-.sortDescription {
+.sortName {
     display: flex;
     justify-content: center;
 }
@@ -97,7 +96,7 @@
     width: 80px;
 }
 
-.columnDescription {
+.columnName {
     display: flex;
     justify-content: left;
     align-items: center;
@@ -192,7 +191,7 @@
         width: 40px;
     }
 
-    .columnDescription {
+    .columnName {
         justify-content: flex-start;
         width: 320px;
     }

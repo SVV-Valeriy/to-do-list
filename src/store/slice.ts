@@ -4,6 +4,7 @@ const LS_TASK_KEY = 'localTasks'
 
 export interface ITask {
     id: number
+    name: string
     description: string
     status: boolean
     date: Date
@@ -19,7 +20,7 @@ export const taskSlice = createSlice({
     name: 'toDoList',
     initialState,
     reducers: {
-        changeTask(state, action: PayloadAction<ITask>) {
+        changeStatus(state, action: PayloadAction<ITask>) {
             state.tasks.map(task => {
                 if (task.id === Number(action.payload.id)) {
                     task.status = !action.payload.status
@@ -32,6 +33,7 @@ export const taskSlice = createSlice({
         addTask(state, action: PayloadAction<ITask>) {
             const newTask = {
                 id: Math.random(),
+                name: action.payload.name,
                 description: action.payload.description,
                 status: false,
                 date: new Date()
@@ -42,7 +44,17 @@ export const taskSlice = createSlice({
         deleteTask(state, action: PayloadAction<ITask>) {
             state.tasks = state.tasks.filter(task => task.id !== action.payload.id)
             localStorage.setItem(LS_TASK_KEY, JSON.stringify(state.tasks))
-        }
+        },
+        changeTask(state, action: PayloadAction<ITask>) {
+            state.tasks.map(task => {
+                if (task.id === Number(action.payload.id)) {
+                    task.name = action.payload.name
+                    task.description = action.payload.description
+                }
+                return task
+            })
+            localStorage.setItem(LS_TASK_KEY, JSON.stringify(state.tasks))
+        },
     }
 })
 

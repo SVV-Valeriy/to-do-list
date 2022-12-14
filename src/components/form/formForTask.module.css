@@ -1,0 +1,76 @@
+.leftPaddingHeader {
+    font-weight: 700;
+    padding-left: 18px;
+    margin-top: 0;
+}
+
+.textName {
+    padding-left: 18px;
+    font-weight: 400
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.inputName {
+    border: 1px #DDE2E4 solid;
+    border-radius: 10px;
+    width: 311px;
+    height: 40px;
+}
+
+.inputDescription {
+    border: 1px #DDE2E4 solid;
+    border-radius: 10px;
+    width: 311px;
+    height: 100px;
+    resize: none
+}
+
+.inputErrors {
+    border: 1px red solid;
+}
+
+.textDescription {
+    padding-left: 18px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-weight: 400;
+    align-self: flex-start;
+}
+
+.error {
+    margin: 3px 0 0 20px;
+    align-self: flex-start;
+    color: red;
+    font-size: 8px;
+}
+
+.buttonAdd {
+    border: none;
+    background: #F0F5FF;
+    border-radius: 8px;
+    margin: 20px;
+    width: 153px;
+    height: 48px;
+    cursor: pointer;
+    font-weight: 700;
+    color: #314B99
+}
+
+.buttonAddFilled {
+    background: #314B99;
+    color: white;
+}
+
+.invisibleButton {
+    background: transparent;
+    border: none;
+    font-size: 0;
+    padding: 0;
+    cursor: pointer;
+}

@@ -5,6 +5,7 @@
     border-radius: 0 !important;
     box-shadow: none !important;
     width: 116px;
+    cursor: pointer !important;
 }
 
 .custom-select__menu {
