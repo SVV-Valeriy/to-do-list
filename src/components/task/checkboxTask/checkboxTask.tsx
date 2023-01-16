@@ -1,16 +1,14 @@
 import React, {FC} from "react";
-import {useActions} from "../../../hooks/action";
 import style from './checkboxTask.module.css'
 import classNames from "classnames";
 
 interface IProps {
     status: boolean
     id: number
+    changeStatus: ({}) => ({})
 }
 
-export const CheckboxTask: FC<IProps> = ({status, id}) => {
-
-    const {changeStatus} = useActions()
+export const CheckboxTask: FC<IProps> = ({status, id, changeStatus}) => {
 
     const onChangeCheckbox = () => {
         changeStatus({id, status})

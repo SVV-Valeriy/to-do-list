@@ -1,12 +1,14 @@
-import React, {FC} from "react";
+import React, {FC, useState} from "react";
 import {ErrorMessage, Field, Form, Formik, FormikHelpers, useFormikContext} from "formik";
 import style from './formForTask.module.css'
 import {Cross} from "../../images/cross";
 import classNames from "classnames";
+import {DropPriority} from "../dropPriority/dropPriority";
 
 interface IFormValues {
     name: string
     description: string
+    priority: number
 }
 
 interface IErrors {
@@ -15,10 +17,12 @@ interface IErrors {
 
 interface IProps {
     title: string
+    buttonName: string
     submit: ({}) => ({})
     name?: string
     description?: string
     id?: number
+    priority?: number
     isOpen: boolean
     setOpenModal: (boolean: boolean) => void
 }
@@ -28,9 +32,14 @@ const AutoValues = () => {
     return null
 }
 
-export const FormForTask: FC<IProps> = ({isOpen, setOpenModal, submit, title, id, name, description}) => {
+export const FormForTask: FC<IProps> = ({isOpen, setOpenModal, submit, title, id, name, description, buttonName, priority}) => {
+
+    const priorityValue = priority ? String(priority) : '3'
+
+    const [selectedOption, setSelectedOption] = useState(priorityValue);
+
     const onSubmitForm = (values: IFormValues, {resetForm}: FormikHelpers<IFormValues>) => {
-        submit({name: values.name, description: values.description, id: id})
+        submit({name: values.name, description: values.description, priority: selectedOption, id: id})
         setOpenModal(false)
         resetForm()
     }
@@ -53,7 +62,8 @@ export const FormForTask: FC<IProps> = ({isOpen, setOpenModal, submit, title, id
             <Formik
                 initialValues={{
                     name: name ?? '',
-                    description: description ?? ''
+                    description: description ?? '',
+                    priority: priority ?? 3
                 }}
                 validate={values => {
                     const errors: IErrors = {}
@@ -69,12 +79,16 @@ export const FormForTask: FC<IProps> = ({isOpen, setOpenModal, submit, title, id
                         <div className={style.form}>
                             <Field className={inputErrors(errors)} id='name' name='name'
                                    placeholder='Введите название'/>
+                            <ErrorMessage component='Field' className={style.error} name='name'/>
                             <div className={style.textDescription}>Описание</div>
-                            <Field className={style.inputDescription} component="textarea" id='description'
+                            <Field className={style.inputDescription} component='textarea' id='description'
                                    name='description' placeholder='Введите описание'/>
+                            <div className={style.prioritySelect}>
+                                <div className={style.textPriority}>Приоритет: </div>
+                                <DropPriority selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
+                            </div>
                             <AutoValues/>
-                            <ErrorMessage component='div' className={style.error} name='task'/>
-                            <button className={buttonDisabled(values)} type='submit'>Создать</button>
+                            <button className={buttonDisabled(values)} type='submit'>{buttonName}</button>
                         </div>
                     </Form>
                 )}

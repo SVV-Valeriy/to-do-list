@@ -1,14 +1,3 @@
-.container {
-    margin: auto;
-    width: 1300px;
-    height: 531px;
-}
-
-.title {
-    font-weight: bold;
-    padding-left: 30px;
-}
-
 .searchAndSort {
     display: flex;
     justify-content: space-between;
@@ -58,12 +47,6 @@
 
 .filterForDate {
     margin: 0 0 0 10px;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .invisibleButton {
@@ -162,14 +145,6 @@
 }
 
 @media (max-width: 768px) {
-    .container {
-        width: 400px;
-    }
-
-    .title {
-        padding-left: 0;
-    }
-
     .magnifyingIndent {
         padding-left: 0;
     }

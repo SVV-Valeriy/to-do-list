@@ -1,15 +1,12 @@
 import React, {useState} from "react";
 import {useAppSelector} from "../../hooks/redux";
 import {Task} from "../task/task";
-import {Modal} from "../modal/modal";
 import style from './homePage.module.css'
-import {PlusIcon} from '../../images/plusIcon'
 import {Magnifier} from "../../images/magnifier";
-import classNames from 'classnames';
 import {EmptyTask} from "../task/emptyTask/emptyTask";
 import {DropDown} from "../dropDown/dropdown";
 import {useActions} from "../../hooks/action";
-import {FormForTask} from "../form/formForTask";
+import {Plus} from "../../images/plus";
 
 export const HomePage = () => {
 
@@ -20,6 +17,7 @@ export const HomePage = () => {
     const [sort, setSort] = useState('')
     const [sortOrderStatus, setSortOrderStatus] = useState(true)
     const [sortOrderDate, setSortOrderDate] = useState(true)
+    const [sortOrderPriority, setSortOrderPriority] = useState(true)
 
     const showModal = () => {
         setOpenModal(true)
@@ -44,12 +42,22 @@ export const HomePage = () => {
         }
     })
 
+    const sortPriority = [...tasks].sort((a, b) => {
+        if (sortOrderPriority) {
+            return b.priority - a.priority
+        } else {
+            return a.priority - b.priority
+        }
+    })
+
     const forTask = (sort: string) => {
         switch (sort) {
             case 'status':
                 return sortForStatus
             case 'date':
                 return sortDate
+            case 'priority':
+                return sortPriority
             default:
                 return tasks
         }
@@ -59,19 +67,16 @@ export const HomePage = () => {
         return name.toLowerCase().includes(value.toLowerCase()) || String(date).toLowerCase().includes(value.toLowerCase())
     })
 
-    const tasksElement = filteredTasks.map(({name, description, status, date, id}) => (
-        <Task key={id} status={status} name={name} description={description} date={date} id={id}/>))
+    const tasksElement = filteredTasks.map(({name, description, status, date, id, comments, priority, subTasks}) => (
+        <Task key={id} priority={priority} status={status} name={name} description={description} date={date} id={id}
+              subTasks={subTasks} comments={comments}/>))
+
+    const buttonName = 'Создать'
 
     const title = 'Создать новую задачу'
 
     return (
-        <div className={style.container}>
-            <div className={style.header}>
-                <h1 className={style.title}>To do list</h1>
-                <button className={style.invisibleButton} onClick={showModal}>
-                    <PlusIcon/>
-                </button>
-            </div>
+        <>
             <div className={style.searchAndSort}>
                 <div className={style.search}>
                     <p className={style.magnifyingIndent}><Magnifier/></p>
@@ -88,8 +93,8 @@ export const HomePage = () => {
                         <p>Сортировать: </p>
                         <DropDown sort={sort} setSort={setSort}
                                   sortOrderStatus={sortOrderStatus} setSortOrderStatus={setSortOrderStatus}
-                                  sortOrderDate={sortOrderDate}
-                                  setSortOrderDate={setSortOrderDate}
+                                  sortOrderDate={sortOrderDate} setSortOrderDate={setSortOrderDate}
+                                  sortOrderPriority={sortOrderPriority} setSortOrderPriority={setSortOrderPriority}
                         />
                     </div>
                 </div>
@@ -102,12 +107,11 @@ export const HomePage = () => {
                         <p className={style.borderLeft}>Задачи</p>
                     </th>
                     <th className={style.columnStatus}>
-                        <p className={style.borderLeft}>Статус</p>
+                        <p className={style.borderLeft}>Приоритет</p>
                     </th>
                     <th className={style.columnDate}>
                         <p className={style.borderLeft}>Дата</p>
                     </th>
-                    <th className={classNames(style.columnDelete, style.borderLeftForDelete)}/>
                 </tr>
                 </thead>
                 <tbody>
@@ -117,9 +121,6 @@ export const HomePage = () => {
                 }
                 </tbody>
             </table>
-            {isOpenModal && <Modal isOpenModal={isOpenModal} onClose={onClose}>
-                <FormForTask isOpen={isOpenModal} setOpenModal={setOpenModal} title={title} submit={addTask}/>
-            </Modal>}
-        </div>
+        </>
     )
 }

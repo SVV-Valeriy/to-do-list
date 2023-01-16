@@ -21,6 +21,34 @@
     width: 937px;
 }
 
+.addTask {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.addTask:hover .textTask {
+    font-weight: bold;
+    color: #314B99;
+    margin-left: 18px;
+}
+
+.addTask:hover svg{
+    color: #fff;
+    border: 1px solid #314B99;
+    background-color: #314B99;
+    border-radius: 50%;
+}
+
+.textTask {
+    font-size: medium;
+    margin-left: 20px;
+}
+
 .paddingForText {
     padding-left: 17px;
     font-size: 16px;

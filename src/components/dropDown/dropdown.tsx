@@ -9,14 +9,17 @@ interface IProps {
     setSortOrderStatus: Dispatch<SetStateAction<boolean>>
     sortOrderDate: boolean
     setSortOrderDate: Dispatch<SetStateAction<boolean>>
+    sortOrderPriority: boolean
+    setSortOrderPriority: Dispatch<SetStateAction<boolean>>
 }
 
 const options = [
     {value: 'date', label: 'Дата'},
     {value: 'status', label: 'Статус'},
+    {value: 'priority', label: 'Приоритет'},
 ];
 
-export const DropDown: FC<IProps> = ({sort, setSort, sortOrderStatus, setSortOrderStatus, sortOrderDate, setSortOrderDate}) => {
+export const DropDown: FC<IProps> = ({sort, setSort, sortOrderStatus, setSortOrderStatus, sortOrderDate, setSortOrderDate, sortOrderPriority, setSortOrderPriority}) => {
 
     const [selectedOption, setSelectedOption] = useState('date');
 
@@ -34,11 +37,17 @@ export const DropDown: FC<IProps> = ({sort, setSort, sortOrderStatus, setSortOrd
         setSortOrderDate(sortOrderDate)
     }
 
+    const sortPriority = (sort: string, sortOrderPriority: boolean) => {
+        setSort('priority')
+        setSortOrderPriority(sortOrderPriority)
+    }
+
     const onHandleChange = (newValue: any) => {
         setSelectedOption(newValue.value)
         switch (newValue.value) {
             case 'status': return sortStatus('status', !sortOrderStatus)
             case 'date': return sortDate('date', !sortOrderDate)
+            case 'priority': return sortPriority('priority', !sortOrderPriority)
             default: return setSort('')
         }
     }

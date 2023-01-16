@@ -1,0 +1,44 @@
+.containerMenu {
+    background-color: #F0F5FF;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border-radius: 20px;
+    font-weight: bold;
+    padding: 20px;
+    max-height: 170px;
+}
+
+.taskNumber {
+    margin-top: 0;
+}
+.textPosition {
+    display: flex;
+    flex-direction: row;
+}
+
+.textDate {
+    margin-right: 10px;
+}
+
+.invisibleButton {
+    background: transparent;
+    border: none;
+    font-size: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.textDelete {
+    margin-left: 10px;
+}
+
+.deleteWithTrash {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.deleteWithTrash:hover {
+    color: #ff0000;
+}

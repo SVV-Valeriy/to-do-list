@@ -1,0 +1,50 @@
+.formComment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #DDE2E4;
+    border-radius: 10px;
+    width: 61vw;
+    margin-left: 3px;
+    padding-left: 6px;
+    margin-top: 20px;
+    padding-right: 5px;
+}
+
+.inputName {
+    margin-top: 10px;
+    resize: none;
+    padding: 0;
+    font-weight: bold;
+    font-size: 12.8px;
+    border: none;
+}
+
+.editWithSubmit {
+    display: flex;
+    flex-direction: row-reverse
+}
+
+.editButton {
+    background-color: #F0F5FF;
+    color: #314B99;
+    font-weight: bold;
+    margin-right: 20px;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.submitButton {
+    background-color: #134EC1;
+    color: #ffffff;
+    font-weight: bold;
+    margin-right: 20px;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}

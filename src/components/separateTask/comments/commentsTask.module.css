@@ -1,0 +1,92 @@
+.commentContainer {
+    display: flex;
+    justify-content: space-between;
+    max-width: 850px;
+}
+
+.commentContent {
+    display: flex;
+}
+
+.commentContainer:hover .setting {
+    opacity: 1;
+}
+
+.nameWithComment {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.dateWithName {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+
+.borderAvatar {
+    color: #134EC1;
+    font-weight: bold;
+    border: 1px solid #134EC1;
+    min-width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.textUserName {
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+.textForDate {
+    display: flex;
+    align-items: center;
+    font-size: 60%;
+}
+
+.descriptionWithDelete {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.textForComment {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    font-size: 80%;
+    font-weight: 700;
+    margin: 0 0 0 10px;
+}
+
+.setting {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    opacity: 0;
+}
+
+.invisibleButtonPen {
+    background: transparent;
+    border: none;
+    font-size: 0;
+    padding: 0 10px 0 0;
+    cursor: pointer;
+}
+
+.invisibleButton {
+    background: transparent;
+    border: none;
+    font-size: 0;
+    padding: 0;
+    cursor: pointer;
+}

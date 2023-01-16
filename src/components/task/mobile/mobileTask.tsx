@@ -18,8 +18,8 @@ export const MobileTask: FC<IProps> = ({status, date, description}) => {
 
     return (
         <tr className={style.vision}>
-            <td className={style.textDescription}>{description}</td>
-            <td className={textColor}>{status ? 'Выполнено' : 'В работе'}</td>
+            <td className={style.textDescription}>Описание: {description}</td>
+            <td className={textColor}>Статус: {status ? 'Выполнено' : 'В работе'}</td>
             <td className={style.textDate}>Дата: {dateConversion}</td>
         </tr>
     )
