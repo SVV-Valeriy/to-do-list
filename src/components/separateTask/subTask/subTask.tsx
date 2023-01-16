@@ -4,7 +4,7 @@ import {IComment} from "../../../store/slice";
 import {CheckboxTask} from "../../task/checkboxTask/checkboxTask";
 import {useActions} from "../../../hooks/action";
 import {FormSeparateTask} from "../formSeparateTask/formSeparateTask";
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import Tippy from "@tippyjs/react";
 import {Pen} from "../../../images/pen";
 import {Trash} from "../../../images/trash";
@@ -36,6 +36,10 @@ export const SubTask: FC<IProps> = ({subId, name, description, priority, date, c
 
     const localDate = new Date(date).toLocaleDateString()
 
+    const stopEvents = (e: React.MouseEvent) => {
+        e.stopPropagation()
+    }
+
     const transition = () => {
         navigate(`/${id}/${subId}`)
     }
@@ -45,7 +49,7 @@ export const SubTask: FC<IProps> = ({subId, name, description, priority, date, c
     }
 
     return (
-        <div className={style.subTaskContainer} key={subId}>
+        <div className={style.subTaskContainer} onClick={stopEvents} key={subId}>
             <div className={style.checkbox}>
                 <CheckboxTask changeStatus={changeSubStatus} id={subId} status={status}/>
             </div>
