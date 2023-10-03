@@ -1,25 +1,22 @@
-import React, {FC} from "react";
-import {Field, Form, Formik, FormikHelpers} from "formik";
+import React, { FC } from 'react'
+import { Field, Form, Formik, FormikHelpers } from 'formik'
 import style from './addCommentForm.module.css'
-import {Send} from "../../../../images/send";
-import Tippy from "@tippyjs/react";
-
+import { Send } from '../../../../images/send'
+import Tippy from '@tippyjs/react'
 
 interface IFormValues {
     comment: string
 }
 
 interface IProps {
-    // addComment: ({}) => ({})
-    addComment: any
+    addComment: ({}) => {}
     id: number
     userName: string
 }
 
-export const AddCommentForm: FC<IProps> = ({id, addComment, userName}) => {
-
-    const onSubmitForm = (values: IFormValues, {resetForm}: FormikHelpers<IFormValues>) => {
-        addComment({comment: values.comment, id: id})
+export const AddCommentForm: FC<IProps> = ({ id, addComment, userName }) => {
+    const onSubmitForm = (values: IFormValues, { resetForm }: FormikHelpers<IFormValues>) => {
+        addComment({ comment: values.comment, id: id })
         resetForm()
     }
 
@@ -35,17 +32,20 @@ export const AddCommentForm: FC<IProps> = ({id, addComment, userName}) => {
                 initialValues={{
                     comment: '',
                 }}
-                onSubmit={onSubmitForm}>
-                {({errors, touched, values}) => (
+                onSubmit={onSubmitForm}
+            >
+                {({ errors, touched, values }) => (
                     <Form className={style.formComment} onClick={stopEvents}>
                         <p className={style.borderAvatar}>{firstSymbolName}</p>
                         <div className={style.inputWithButton}>
-                        <Field id='comment' name='comment' placeholder='Комментировать'/>
-                        <button className={style.invisibleButton} type='submit'>
-                            <Tippy content={<span>Отправить комментарий</span>}>
-                                <div><Send/></div>
-                            </Tippy>
-                        </button>
+                            <Field id="comment" name="comment" placeholder="Комментировать" />
+                            <button className={style.invisibleButton} type="submit">
+                                <Tippy content={<span>Отправить комментарий</span>}>
+                                    <div>
+                                        <Send />
+                                    </div>
+                                </Tippy>
+                            </button>
                         </div>
                     </Form>
                 )}

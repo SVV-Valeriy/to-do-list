@@ -1,5 +1,5 @@
-import React, {FC, RefObject, useRef} from "react";
-import {useFormik} from "formik";
+import React, { FC, RefObject, useRef } from 'react'
+import { useFormik } from 'formik'
 import style from './changeCommentForm.module.css'
 
 interface IFormValues {
@@ -10,13 +10,12 @@ interface IProps {
     OffEditMode: () => void
     id: number
     comment: string
-    changeComment: ({}) => ({})
+    changeComment: ({}) => {}
 }
 
-export const ChangeCommentForm: FC<IProps> = ({id, comment, OffEditMode, changeComment}) => {
-
+export const ChangeCommentForm: FC<IProps> = ({ id, comment, OffEditMode, changeComment }) => {
     const onSubmitForm = (values: IFormValues) => {
-        changeComment({comment: values.comment, id: id})
+        changeComment({ comment: values.comment, id: id })
         OffEditMode()
     }
 
@@ -24,21 +23,29 @@ export const ChangeCommentForm: FC<IProps> = ({id, comment, OffEditMode, changeC
         initialValues: {
             comment: comment,
         },
-        onSubmit: onSubmitForm
+        onSubmit: onSubmitForm,
     })
 
     const ref: RefObject<HTMLTextAreaElement> = useRef(null)
 
     return (
-            <form onSubmit={formik.handleSubmit} className={style.formComment}>
-                    <textarea className={style.inputName} onChange={formik.handleChange} value={formik.values.comment}
-                              id='comment' name='comment'/>
-                <div className={style.editWithSubmit}>
-                    <button className={style.submitButton} type='submit'>Сохранить
-                    </button>
-                    <button className={style.editButton} type='button' onClick={OffEditMode}>Отмена
-                    </button>
-                </div>
-            </form>
+        <form onSubmit={formik.handleSubmit} className={style.formComment}>
+            <textarea
+                className={style.inputName}
+                onChange={formik.handleChange}
+                value={formik.values.comment}
+                id="comment"
+                name="comment"
+            />
+            {/*<div className={style.editWithSubmit}>*/}
+            <div className="editWithSubmit textWork description div">
+                <button className={style.submitButton} type="submit">
+                    Сохранить
+                </button>
+                <button className={style.editButton} type="button" onClick={OffEditMode}>
+                    Отмена
+                </button>
+            </div>
+        </form>
     )
 }

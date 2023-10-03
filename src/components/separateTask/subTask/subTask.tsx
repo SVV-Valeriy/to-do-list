@@ -1,13 +1,13 @@
-import React, {FC, useState} from "react";
+import React, { FC, useState } from 'react'
 import style from './subTask.module.css'
-import {IComment} from "../../../store/slice";
-import {CheckboxTask} from "../../task/checkboxTask/checkboxTask";
-import {useActions} from "../../../hooks/action";
-import {FormSeparateTask} from "../formSeparateTask/formSeparateTask";
-import {useNavigate, useParams, useSearchParams} from "react-router-dom";
-import Tippy from "@tippyjs/react";
-import {Pen} from "../../../images/pen";
-import {Trash} from "../../../images/trash";
+import { IComment } from '../../../store/slice'
+import { CheckboxTask } from '../../task/checkboxTask/checkboxTask'
+import { useActions } from '../../../hooks/action'
+import { FormSeparateTask } from '../formSeparateTask/formSeparateTask'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import Tippy from '@tippyjs/react'
+import { Pen } from '../../../images/pen'
+import { Trash } from '../../../images/trash'
 
 interface IProps {
     subId: number
@@ -19,12 +19,19 @@ interface IProps {
     comments: Array<IComment>
 }
 
-export const SubTask: FC<IProps> = ({subId, name, description, priority, date, comments, status}) => {
-
+export const SubTask: FC<IProps> = ({
+    subId,
+    name,
+    description,
+    priority,
+    date,
+    comments,
+    status,
+}) => {
     const [editMode, setEditMode] = useState(false)
-    const {changeSubStatus, changeSubTask, deleteSubTask} = useActions()
-    const {id} = useParams();
-    const navigate = useNavigate();
+    const { changeSubStatus, changeSubTask, deleteSubTask } = useActions()
+    const { id } = useParams()
+    const navigate = useNavigate()
 
     const OnEditMode = () => {
         setEditMode(true)
@@ -40,40 +47,52 @@ export const SubTask: FC<IProps> = ({subId, name, description, priority, date, c
         e.stopPropagation()
     }
 
-    const transition = () => {
-        navigate(`/${id}/${subId}`)
-    }
+    // const transition = () => {
+    //     navigate(`/${id}/${subId}`)
+    // }
 
     const deleteObjective = () => {
-        deleteSubTask({id: subId})
+        deleteSubTask({ id: subId })
     }
 
     return (
         <div className={style.subTaskContainer} onClick={stopEvents} key={subId}>
             <div className={style.checkbox}>
-                <CheckboxTask changeStatus={changeSubStatus} id={subId} status={status}/>
+                <CheckboxTask changeStatus={changeSubStatus} id={subId} status={status} />
             </div>
             <div className={style.subTaskWithSetting}>
-                {editMode ? <FormSeparateTask changeTask={changeSubTask} OffEditMode={OffEditMode} id={subId}
-                                              description={description} name={name}/>
-                    :
-                    <div onClick={transition} className={style.nameWithDescription}>
+                {editMode ? (
+                    <FormSeparateTask
+                        changeTask={changeSubTask}
+                        OffEditMode={OffEditMode}
+                        id={subId}
+                        description={description}
+                        name={name}
+                    />
+                ) : (
+                    <div className={style.nameWithDescription}>
                         <p className={style.name}>{name}</p>
                         <p className={style.description}>{description}</p>
-                    </div>}
-                {!editMode &&
-                <div className={style.setting}>
-                    <button className={style.invisibleButtonPen} onClick={OnEditMode}>
-                        <Tippy content={<span>Изменить подзадачу</span>}>
-                            <div><Pen/></div>
-                        </Tippy>
-                    </button>
-                    <button className={style.invisibleButton} onClick={deleteObjective}>
-                        <Tippy content={<span>Удалить подзадачу</span>}>
-                            <div><Trash/></div>
-                        </Tippy>
-                    </button>
-                </div>}
+                    </div>
+                )}
+                {!editMode && (
+                    <div className={style.setting}>
+                        <button className={style.invisibleButtonPen} onClick={OnEditMode}>
+                            <Tippy content={<span>Изменить подзадачу</span>}>
+                                <div>
+                                    <Pen />
+                                </div>
+                            </Tippy>
+                        </button>
+                        <button className={style.invisibleButton} onClick={deleteObjective}>
+                            <Tippy content={<span>Удалить подзадачу</span>}>
+                                <div>
+                                    <Trash />
+                                </div>
+                            </Tippy>
+                        </button>
+                    </div>
+                )}
             </div>
         </div>
     )

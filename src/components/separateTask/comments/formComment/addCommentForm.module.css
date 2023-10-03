@@ -27,7 +27,7 @@
 .inputWithButton {
     display: flex;
     flex-direction: row;
-    width: 820px;
+    width: 810px;
     border: 1px #DDE2E4 solid;
     border-radius: 10px;
     margin-left: 10px;
@@ -36,7 +36,7 @@
 .inputWithButton input {
     border: none;
     border-radius: 10px;
-    width: 770px;
+    width: 760px;
     height: 25px;
     margin-left: 10px;
 }

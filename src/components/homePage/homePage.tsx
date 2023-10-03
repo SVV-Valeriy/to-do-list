@@ -1,37 +1,30 @@
-import React, {useState} from "react";
-import {useAppSelector} from "../../hooks/redux";
-import {Task} from "../task/task";
+import React, { useState } from 'react'
+import { useAppSelector } from '../../hooks/redux'
+import { Task } from '../task/task'
 import style from './homePage.module.css'
-import {Magnifier} from "../../images/magnifier";
-import {EmptyTask} from "../task/emptyTask/emptyTask";
-import {DropDown} from "../dropDown/dropdown";
-import {useActions} from "../../hooks/action";
-import {Plus} from "../../images/plus";
+import { Magnifier } from '../../images/magnifier'
+import { EmptyTask } from '../task/emptyTask/emptyTask'
+import { DropDown } from '../dropDown/dropdown'
+import { useActions } from '../../hooks/action'
 
 export const HomePage = () => {
-
-    const {tasks} = useAppSelector(state => state.task)
-    const {addTask} = useActions()
-    const [isOpenModal, setOpenModal] = useState(false)
+    const { tasks } = useAppSelector(state => state.task)
     const [value, setValue] = useState('')
     const [sort, setSort] = useState('')
     const [sortOrderStatus, setSortOrderStatus] = useState(true)
     const [sortOrderDate, setSortOrderDate] = useState(true)
     const [sortOrderPriority, setSortOrderPriority] = useState(true)
 
-    const showModal = () => {
-        setOpenModal(true)
-    }
-
-    const onClose = () => {
-        setOpenModal(false)
-    }
+    const [state, setState] = useState({
+        isOpenModal: false,
+        sortOrderStatus: true,
+        sortOrderDate: true,
+        sortOrderPriority: true,
+    })
 
     const sortForStatus = [...tasks].sort((a, b) => {
-        if (sortOrderStatus)
-            return Number(a.status) - Number(b.status)
-        else
-            return Number(b.status) - Number(a.status)
+        if (sortOrderStatus) return Number(a.status) - Number(b.status)
+        else return Number(b.status) - Number(a.status)
     })
 
     const sortDate = [...tasks].sort((a, b) => {
@@ -63,13 +56,28 @@ export const HomePage = () => {
         }
     }
 
-    const filteredTasks = forTask(sort).filter(({name, date}) => {
-        return name.toLowerCase().includes(value.toLowerCase()) || String(date).toLowerCase().includes(value.toLowerCase())
+    const filteredTasks = forTask(sort).filter(({ name, date }) => {
+        return (
+            name.toLowerCase().includes(value.toLowerCase()) ||
+            String(date).toLowerCase().includes(value.toLowerCase())
+        )
     })
 
-    const tasksElement = filteredTasks.map(({name, description, status, date, id, comments, priority, subTasks}) => (
-        <Task key={id} priority={priority} status={status} name={name} description={description} date={date} id={id}
-              subTasks={subTasks} comments={comments}/>))
+    const tasksElement = filteredTasks.map(
+        ({ name, description, status, date, id, comments, priority, subTasks }) => (
+            <Task
+                key={id}
+                priority={priority}
+                status={status}
+                name={name}
+                description={description}
+                date={date}
+                id={id}
+                subTasks={subTasks}
+                comments={comments}
+            />
+        )
+    )
 
     const buttonName = 'Создать'
 
@@ -79,47 +87,50 @@ export const HomePage = () => {
         <>
             <div className={style.searchAndSort}>
                 <div className={style.search}>
-                    <p className={style.magnifyingIndent}><Magnifier/></p>
+                    <p className={style.magnifyingIndent}>
+                        <Magnifier />
+                    </p>
                     <form>
-                        <input className={style.inputSearch}
-                               type='text'
-                               placeholder='Поиск...'
-                               onChange={(event) => setValue(event.target.value)}
+                        <input
+                            className={style.inputSearch}
+                            type="text"
+                            placeholder="Поиск..."
+                            onChange={event => setValue(event.target.value)}
                         />
                     </form>
                 </div>
                 <div className={style.sort}>
                     <div className={style.sortName}>
                         <p>Сортировать: </p>
-                        <DropDown sort={sort} setSort={setSort}
-                                  sortOrderStatus={sortOrderStatus} setSortOrderStatus={setSortOrderStatus}
-                                  sortOrderDate={sortOrderDate} setSortOrderDate={setSortOrderDate}
-                                  sortOrderPriority={sortOrderPriority} setSortOrderPriority={setSortOrderPriority}
+                        <DropDown
+                            sort={sort}
+                            setSort={setSort}
+                            sortOrderStatus={sortOrderStatus}
+                            setSortOrderStatus={setSortOrderStatus}
+                            sortOrderDate={sortOrderDate}
+                            setSortOrderDate={setSortOrderDate}
+                            sortOrderPriority={sortOrderPriority}
+                            setSortOrderPriority={setSortOrderPriority}
                         />
                     </div>
                 </div>
             </div>
             <table>
                 <thead>
-                <tr className={style.table}>
-                    <th className={style.columnCheckbox}/>
-                    <th className={style.columnName}>
-                        <p className={style.borderLeft}>Задачи</p>
-                    </th>
-                    <th className={style.columnStatus}>
-                        <p className={style.borderLeft}>Приоритет</p>
-                    </th>
-                    <th className={style.columnDate}>
-                        <p className={style.borderLeft}>Дата</p>
-                    </th>
-                </tr>
+                    <tr className={style.table}>
+                        <th className={style.columnCheckbox} />
+                        <th className={style.columnName}>
+                            <p className={style.borderLeft}>Задачи</p>
+                        </th>
+                        <th className={style.columnStatus}>
+                            <p className={style.borderLeft}>Приоритет</p>
+                        </th>
+                        <th className={style.columnDate}>
+                            <p className={style.borderLeft}>Дата</p>
+                        </th>
+                    </tr>
                 </thead>
-                <tbody>
-                {tasks.length > 0
-                    ? tasksElement
-                    : <EmptyTask/>
-                }
-                </tbody>
+                <tbody>{tasks.length > 0 ? tasksElement : <EmptyTask />}</tbody>
             </table>
         </>
     )

@@ -1,8 +1,7 @@
-import {PayloadAction} from "@reduxjs/toolkit";
-import {ISubTasks, ITaskList, LS_TASK_KEY} from "../slice";
+import { PayloadAction } from '@reduxjs/toolkit'
+import { ISubTasks, ITaskList, LS_TASK_KEY } from '../slice'
 
 export const changeSubTask = (state: ITaskList, action: PayloadAction<ISubTasks>) => {
-    debugger
     state.tasks.map(task => {
         task.subTasks.map(subTask => {
             if (subTask.id === Number(action.payload.id)) {

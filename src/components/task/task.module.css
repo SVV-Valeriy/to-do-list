@@ -80,7 +80,7 @@
 .chatComment {
     display: flex;
     justify-content: flex-start;
-    padding-left: 10px;
+    padding-left: 20px;
     margin-top: 3px;
     margin-right: 5px;
 }
@@ -132,7 +132,7 @@
 }
 
 .paddingForDate {
-    padding-left: 19px;
+    padding-left: 21px;
 }
 
 .columnDate {
