@@ -12,23 +12,24 @@
 .form {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
 }
 
 .inputName {
     border: 1px #DDE2E4 solid;
     border-radius: 10px;
-    width: 311px;
+    width: 358px;
     height: 40px;
+    display: flex;
 }
 
 .inputDescription {
     border: 1px #DDE2E4 solid;
     border-radius: 10px;
-    width: 311px;
+    width: 358px;
     height: 100px;
-    resize: none
+    resize: none;
+    /*margin-bottom: 16px;*/
 }
 
 .inputErrors {
@@ -41,6 +42,25 @@
     margin-bottom: 16px;
     font-weight: 400;
     align-self: flex-start;
+}
+
+.prioritySelect {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+}
+
+.textPriority {
+    display: flex;
+    padding-left: 18px;
+    font-weight: 400;
+    align-self: center;
+    margin-right: 25px;
+    margin-top: 7px;
+}
+
+.select {
+    margin-left: 18px;
 }
 
 .error {

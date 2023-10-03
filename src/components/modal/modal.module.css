@@ -19,8 +19,8 @@
 }
 
 .modalContent {
-    width: 350px;
-    height: 370px;
+    width: 400px;
+    height: 420px;
     padding: 20px;
     border-radius: 12px;
     background-color: white;
@@ -35,7 +35,7 @@
 .containerModal {
     display: flex;
     justify-content: flex-end;
-    width: 333px;
+    width: 382px;
 }
 
 .invisibleButton {

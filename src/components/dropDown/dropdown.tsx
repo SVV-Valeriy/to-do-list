@@ -1,5 +1,5 @@
-import React, {Dispatch, FC, SetStateAction, useState} from 'react';
-import Select from 'react-select';
+import React, { Dispatch, FC, SetStateAction, useState } from 'react'
+import Select, { SingleValue } from 'react-select'
 import './dropDown.css'
 
 interface IProps {
@@ -9,16 +9,27 @@ interface IProps {
     setSortOrderStatus: Dispatch<SetStateAction<boolean>>
     sortOrderDate: boolean
     setSortOrderDate: Dispatch<SetStateAction<boolean>>
+    sortOrderPriority: boolean
+    setSortOrderPriority: Dispatch<SetStateAction<boolean>>
 }
 
 const options = [
-    {value: 'date', label: 'Дата'},
-    {value: 'status', label: 'Статус'},
-];
+    { value: 'date', label: 'Дата' },
+    { value: 'status', label: 'Статус' },
+    { value: 'priority', label: 'Приоритет' },
+]
 
-export const DropDown: FC<IProps> = ({sort, setSort, sortOrderStatus, setSortOrderStatus, sortOrderDate, setSortOrderDate}) => {
-
-    const [selectedOption, setSelectedOption] = useState('date');
+export const DropDown: FC<IProps> = ({
+    sort,
+    setSort,
+    sortOrderStatus,
+    setSortOrderStatus,
+    sortOrderDate,
+    setSortOrderDate,
+    sortOrderPriority,
+    setSortOrderPriority,
+}) => {
+    const [selectedOption, setSelectedOption] = useState('date')
 
     const getValue = () => {
         return selectedOption ? options.find(c => c.value === selectedOption) : ''
@@ -34,19 +45,33 @@ export const DropDown: FC<IProps> = ({sort, setSort, sortOrderStatus, setSortOrd
         setSortOrderDate(sortOrderDate)
     }
 
-    const onHandleChange = (newValue: any) => {
-        setSelectedOption(newValue.value)
-        switch (newValue.value) {
-            case 'status': return sortStatus('status', !sortOrderStatus)
-            case 'date': return sortDate('date', !sortOrderDate)
-            default: return setSort('')
+    const sortPriority = (sort: string, sortOrderPriority: boolean) => {
+        setSort('priority')
+        setSortOrderPriority(sortOrderPriority)
+    }
+
+    const onHandleChange = (newValue: SingleValue<string | { value: string }>) => {
+        if (newValue) {
+            if (typeof newValue !== 'string') {
+                setSelectedOption(newValue.value)
+                switch (newValue.value) {
+                    case 'status':
+                        return sortStatus('status', !sortOrderStatus)
+                    case 'date':
+                        return sortDate('date', !sortOrderDate)
+                    case 'priority':
+                        return sortPriority('priority', !sortOrderPriority)
+                    default:
+                        return setSort('')
+                }
+            }
         }
     }
 
     return (
         <div>
             <Select
-                classNamePrefix='custom-select'
+                classNamePrefix="custom-select"
                 onChange={onHandleChange}
                 value={getValue()}
                 options={options}

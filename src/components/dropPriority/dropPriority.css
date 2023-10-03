@@ -1,0 +1,23 @@
+.custom-select__control {
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    width: 116px;
+    cursor: pointer !important;
+    /*margin: 0 !important;*/
+}
+
+.custom-select__option {
+    cursor: pointer !important;
+}
+
+.custom-select__option--is-selected {
+    background-color: #314B99 !important;
+}
+
+@media (max-width: 768px) {
+    .custom-select__control {
+        margin-top: 8px;
+    }
+}

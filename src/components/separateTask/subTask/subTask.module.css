@@ -1,0 +1,58 @@
+.subTaskContainer {
+    display: flex;
+    margin-top: 20px;
+    width: 850px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: flex-start;
+}
+
+.name {
+    margin: 0 16px 19px 16px;
+    font-weight: bold;
+}
+
+.description {
+    margin: 0 16px 16px 16px;
+}
+
+.nameWithDescription {
+    display: flex;
+    flex-direction: column;
+}
+
+.subTaskWithSetting {
+    width: 828px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.subTaskWithSetting:hover .setting {
+    opacity: 1;
+}
+
+.setting {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    opacity: 0;
+}
+
+.invisibleButtonPen {
+    background: transparent;
+    border: none;
+    font-size: 0;
+    padding: 0 10px 0 0;
+    cursor: pointer;
+}
+
+.invisibleButton {
+    background: transparent;
+    border: none;
+    font-size: 0;
+    padding: 0;
+    cursor: pointer;
+}

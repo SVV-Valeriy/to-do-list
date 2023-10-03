@@ -1,5 +1,10 @@
 * {
     font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+}
+
+a {
+    color: #000000;
 }
 
 input {

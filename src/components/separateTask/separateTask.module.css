@@ -1,0 +1,116 @@
+.containerForSeparate {
+    width: 1267px;
+    margin-left: 30px;
+}
+
+.revertButton {
+    margin: 0;
+    /*margin: 0 0 50px 0;*/
+}
+
+.taskWithMenu {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.checkboxWithName {
+    display: flex;
+    align-items: flex-start;
+    width: 887px;
+}
+
+.nameWithDescription {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    margin: 0 16px 19px 16px;
+    font-weight: bold;
+}
+
+.description {
+    margin: 0 16px 16px 16px;
+}
+
+.subAndComment {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 37px;
+}
+
+.chevronWithSubTask {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #EEEBE9;
+    width: 850px;
+    cursor: pointer;
+}
+
+.textSubTask {
+    margin-left: 20px;
+}
+
+/*.textSubTask:hover {*/
+/*    color: red;*/
+/*    font-weight: bold;*/
+/*}*/
+
+.visionArrow {
+    display: flex;
+    justify-content: flex-end;
+    min-width: 16px;
+    min-height: 16px;
+    align-items: center;
+    text-align: right;
+    color: #16191d;
+}
+
+.coup {
+    display: block;
+    text-align: right;
+    transform: rotate(90deg);
+    color: #16191D;
+    min-width: 16px;
+    min-height: 16px;
+}
+
+.chevronWithComment {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #EEEBE9;
+    width: 850px;
+    cursor: pointer;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.addSubTask {
+    margin-left: 2px;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.addSubTask:hover .textSubTask {
+    font-weight: bold;
+    color: #314B99;
+    margin-left: 18px;
+}
+
+.addSubTask:hover svg{
+    color: #fff;
+    border: 1px solid #314B99;
+    background-color: #314B99;
+    border-radius: 50%;
+}

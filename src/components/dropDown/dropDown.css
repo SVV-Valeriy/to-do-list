@@ -8,10 +8,6 @@
     cursor: pointer !important;
 }
 
-.custom-select__menu {
-    max-height: 80px !important;
-}
-
 .custom-select__option {
     cursor: pointer !important;
 }

@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 58px;
     max-height: 100vh;
     border-top: 1px solid #EEEBE9;
     max-width: 1300px;
@@ -16,10 +15,19 @@
 }
 
 .columnName {
+    margin: 10px 0;
     display: flex;
     justify-content: space-between;
     width: 937px;
     cursor: pointer;
+}
+
+.columnName:hover .setting {
+    opacity: 1;
+}
+
+.nameWithChevron {
+    display: flex;
 }
 
 .visionArrow {
@@ -35,7 +43,7 @@
 .coup {
     display: block;
     text-align: right;
-    transform: rotate(180deg);
+    transform: rotate(90deg);
     color: #16191D;
     min-width: 16px;
     min-height: 16px;
@@ -64,11 +72,54 @@
     font-size: 80%;
 }
 
+.commentAndSubTask {
+    display: flex;
+    flex-direction: row;
+}
+
+.chatComment {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 20px;
+    margin-top: 3px;
+    margin-right: 5px;
+}
+
+.subTaskImages {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 20px;
+    margin-top: 3px;
+    margin-right: 5px;
+}
+
+.paddingForComments {
+    display: flex;
+    justify-content: flex-start;
+    margin: 16px 0;
+    padding: 10px 0 10px 20px;
+    font-size: 80%;
+    border-top: 1px solid #C4C4C4;
+    border-bottom: 1px solid #C4C4C4;
+    width: 800px;
+}
+
+.commentClass {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.chatSquarePosition {
+    display: flex;
+    align-items: center;
+}
+
 .setting {
     display: flex;
     flex-direction: row;
     align-items: center;
     text-align: center;
+    opacity: 0;
 }
 
 .textWork {
@@ -81,7 +132,7 @@
 }
 
 .paddingForDate {
-    padding-left: 19px;
+    padding-left: 21px;
 }
 
 .columnDate {
